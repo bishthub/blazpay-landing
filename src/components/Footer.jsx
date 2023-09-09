@@ -1,10 +1,10 @@
-import React from "react";
-import logoImage from "../assets/LOGO_IMG.svg";
-import Twitter from "../assets/twitter_logo.svg";
-import LinkedIn from "../assets/linkedin_logo.svg";
-import Discord from "../assets/discord.svg";
-import Telegram from "../assets/telegram.svg";
-import Instagram from "../assets/insta.svg";
+import React from 'react';
+import logoImage from '../assets/LOGO_IMG.svg';
+import Twitter from '../assets/twitter_logo.svg';
+import LinkedIn from '../assets/linkedin_logo.svg';
+import Discord from '../assets/discord.svg';
+import Telegram from '../assets/telegram.svg';
+import Instagram from '../assets/insta.svg';
 
 const Footer = () => {
   return (
@@ -36,9 +36,9 @@ const Footer = () => {
                 </div>
               </div>
               <div className="flex md:w-[65%] justify-center text-start">
-                Lorem Ipsum has been the industry's standard dummy text ever
-                since the 1500s, when an unknown printer took a galley of type
-                and scrambled it to make a type specimen book.
+                Blazpay emerges as an all-encompassing cryptocurrency platform,
+                offering an extensive suite of services for overseeing
+                cryptocurrency transactions and investments.
               </div>
             </div>
             <div className="flex-1 flex flex-row space-x-1 justify-center items-center">

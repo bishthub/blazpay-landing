@@ -1,9 +1,9 @@
-import React from "react";
-import locImage from "../assets/Group 10.svg";
-import clockImage from "../assets/Group 14.svg";
-import userIcon from "../assets/Group 15.svg";
-import worldIcon from "../assets/Group 17.svg";
-import bg from "../assets/whyusbg.png";
+import React from 'react';
+import locImage from '../assets/Group 10.svg';
+import clockImage from '../assets/Group 14.svg';
+import userIcon from '../assets/Group 15.svg';
+import worldIcon from '../assets/Group 17.svg';
+import bg from '../assets/whyusbg.png';
 
 const WhyUs = () => {
   return (
@@ -14,7 +14,7 @@ const WhyUs = () => {
             <div
               style={{
                 background:
-                  "linear-gradient(180deg, #4A4A4A 0%, rgba(74, 74, 74, 0) 100%)",
+                  'linear-gradient(180deg, #4A4A4A 0%, rgba(74, 74, 74, 0) 100%)',
               }}
               className="rounded-3xl md:w-[80%] overflow-hidden bg-[#8E8C8C]/25 mb-4 p-4 shadow-lg"
               data-aos="fade-down"
@@ -30,7 +30,7 @@ const WhyUs = () => {
                 </div>
               </div>
               <div>
-                {" "}
+                {' '}
                 The majority of digital assets are stored in a highly secure
                 offline storage system.
               </div>
@@ -38,7 +38,7 @@ const WhyUs = () => {
             <div
               style={{
                 background:
-                  "linear-gradient(180deg, #4A4A4A 0%, rgba(74, 74, 74, 0) 100%)",
+                  'linear-gradient(180deg, #4A4A4A 0%, rgba(74, 74, 74, 0) 100%)',
               }}
               className="rounded-3xl md:w-[80%] overflow-hidden bg-[#8E8C8C]/25 mb-4 p-4 shadow-lg"
               data-aos="fade-down"
@@ -54,7 +54,7 @@ const WhyUs = () => {
                 </div>
               </div>
               <div>
-                {" "}
+                {' '}
                 Our team provides 24/7 support, ensuring immediate solutions to
                 any issues.
               </div>
@@ -62,7 +62,7 @@ const WhyUs = () => {
             <div
               style={{
                 background:
-                  "linear-gradient(180deg, #4A4A4A 0%, rgba(74, 74, 74, 0) 100%)",
+                  'linear-gradient(180deg, #4A4A4A 0%, rgba(74, 74, 74, 0) 100%)',
               }}
               className="rounded-3xl md:w-[80%] overflow-hidden bg-[#8E8C8C]/25 mb-4 p-4 shadow-lg"
               data-aos="fade-down"
@@ -78,7 +78,7 @@ const WhyUs = () => {
                 </div>
               </div>
               <div>
-                {" "}
+                {' '}
                 We offer an easy-to-use interface for both users and merchants,
                 ensuring a smooth experience.
               </div>
@@ -86,7 +86,7 @@ const WhyUs = () => {
             <div
               style={{
                 background:
-                  "linear-gradient(180deg, #4A4A4A 0%, rgba(74, 74, 74, 0) 100%)",
+                  'linear-gradient(180deg, #4A4A4A 0%, rgba(74, 74, 74, 0) 100%)',
               }}
               className="rounded-3xl md:w-[80%] overflow-hidden bg-[#8E8C8C]/25 mb-4 p-4 shadow-lg"
               data-aos="fade-down"
@@ -98,13 +98,13 @@ const WhyUs = () => {
                   <img src={worldIcon} className="w-6 pt-1" />
                 </div>
                 <div className="font-bold text-2xl mb-2 ml-3">
-                  Worldwide Coverage
+                  On-ramp and off-ramp solutions
                 </div>
               </div>
               <div>
-                {" "}
-                Our platform allows for global registrations and wide acceptance
-                of various cryptocurrencies.
+                {' '}
+                Providing the fastest and safest conversion between
+                cryptocurrencies and fiat currencies
               </div>
             </div>
           </div>
@@ -113,16 +113,16 @@ const WhyUs = () => {
               Why us?
             </div>
             <div className="pb-4" data-aos="fade-in" data-aos-delay="100">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book.
+              Blazpay's emergence as a crypto payment gateway and end-to-end
+              financial solution provider marks a significant milestone in the
+              evolution of the fintech sector. By bridging the gap between
+              traditional finance and the cryptocurrency world.
             </div>
             <div className="pb-5" data-aos="fade-in" data-aos-delay="200">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book.
+              Blazpay propels the industry towards greater accessibility,
+              security, and usability. As it continues to innovate and refine
+              its offerings, Blazpay is poised to play a pivotal role in shaping
+              the future of finance.
             </div>
           </div>
         </div>

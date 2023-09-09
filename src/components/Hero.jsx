@@ -1,7 +1,7 @@
-import React from "react";
-import back1 from "../assets/heroBack.png";
-import mobile1 from "../assets/mobile_4.png";
-import mobile2 from "../assets/mobile_5.png";
+import React from 'react';
+import back1 from '../assets/heroBack.png';
+import mobile1 from '../assets/mobile_4.png';
+import mobile2 from '../assets/mobile_5.png';
 const Hero = () => {
   return (
     <>
@@ -19,11 +19,12 @@ const Hero = () => {
                   Crypto Payments made easy
                 </h1>
                 <p className="text-xs md:text-lg font-thin md:px-6">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Ratione maxime itaque libero iure cupiditate quod vitae non?
-                  Aliquam illo inventore quos! Soluta, impedit harum excepturi
-                  ducimus illum quae blanditiis. Reprehenderit! Quod quae ipsa
-                  doloribus
+                  Blazpay, a leading crypto payment gateway and end -to- end
+                  financial solution provider, is redefining the way businesses
+                  and individuals engage with digital assets thus offering a
+                  holistic ecosystem that encompasses crypto payment gateway ,on
+                  - ramp and off- ramp solutions, and an integrated swap wallet
+                  .
                 </p>
               </div>
             </div>
