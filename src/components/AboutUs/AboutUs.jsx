@@ -6,6 +6,7 @@ import Team from "./Team";
 import TokeNomics from "./TokeNomics";
 import Footer from "../Footer";
 import Gradient from "../../utilities/Gradient";
+import Faq from "./Faq";
 
 const AboutUs = () => {
   return (
@@ -18,6 +19,7 @@ const AboutUs = () => {
       <Team />
       <Gradient />
       <TokeNomics />
+      <Faq />
       <Footer />
     </>
   );
