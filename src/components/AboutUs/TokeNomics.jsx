@@ -1,5 +1,5 @@
 import React from "react";
-import Token from "../../assets/token.png";
+import Token from "../../assets/pie.png";
 
 const TokeNomics = () => {
   return (
@@ -13,40 +13,62 @@ const TokeNomics = () => {
         TOKENNOMICS
       </h1>
 
-      <div className="flex flex-col items-center justify-center md:flex-row">
-        <img className="w-1/2 mr-20 md:m-0" src={Token} alt="" />
+      <div className="flex flex-col items-center justify-center w-full gap-5 md:flex-row">
+        <img
+          className="mr-20 md:m-0"
+          src={Token}
+          alt=""
+          style={{ width: "25rem" }}
+        />
         <div
-          className="  rounded-2xl  bg-gradient-to-t from-[#110C09] to-[#8E8C8C]/25 px-8 mb-20 "
+          className="w-1/2 py-2 m-auto mb-20 border-2 border-orange-700 rounded-xl"
           data-aos="fade-down"
           data-aos-duration="1000"
           data-aos-delay="800"
         >
-          <ul
+          <div
             data-aos="fade-down"
             data-aos-delay="300"
             data-aos-duration="1000"
-            className="text-xs font-thin list-disc md:text-lg md:font-semibold"
+            className="flex flex-col text-xs list-disc md:text-lg md:font-semibold"
           >
-            <li className="pt-6">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem
-              ipsum dolor sit amet consectetur adipisicing elit.
-            </li>
-            <li className="pt-6">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            </li>
-            <li className="pt-6">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            </li>
-            <li className="pt-6">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            </li>
-            <li className="pt-6">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            </li>
-            <li className="pt-6">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            </li>
-          </ul>
+            <div className="flex flex-row items-center justify-between w-full p-3 text-white bg-black">
+              <div className="w-full text-center"></div>
+              <h1 className="w-full text-center">Supply %</h1>
+            </div>
+            <div className="flex flex-row items-center justify-between w-full p-1 text-black bg-white">
+              <p className="w-full text-center">Investors</p>
+              <p className="w-full text-center">20%</p>
+            </div>
+            <div className="flex flex-row items-center justify-between w-full bg-gradient-to-r from-[#FF3503] to-yellow-500 p-3">
+              <p className="w-full text-center">Team & Advisors</p>
+              <p className="w-full text-center">10%</p>
+            </div>
+            <div className="flex flex-row items-center justify-between w-full p-1 text-black bg-white">
+              <p className="w-full text-center">Founders</p>
+              <p className="w-full text-center">3%</p>
+            </div>
+            <div className="flex flex-row items-center justify-between w-full bg-gradient-to-r from-[#FF3503] to-yellow-500 p-3">
+              <p className="w-full text-center">Giveaway/ Airdrops</p>
+              <p className="w-full text-center">5%</p>
+            </div>
+            <div className="flex flex-row items-center justify-between w-full p-1 text-black bg-white">
+              <p className="w-full text-center">Community / Exchanges</p>
+              <p className="w-full text-center">30%</p>
+            </div>
+            <div className="flex flex-row items-center justify-between w-full bg-gradient-to-r from-[#FF3503] to-yellow-500 p-3">
+              <p className="w-full text-center">Locked</p>
+              <p className="w-full text-center">20%</p>
+            </div>
+            <div className="flex flex-row items-center justify-between w-full p-1 text-black bg-white">
+              <p className="w-full text-center">Business Development</p>
+              <p className="w-full text-center">5%</p>
+            </div>
+            <div className="flex flex-row items-center justify-between w-full bg-gradient-to-r from-[#FF3503] to-yellow-500 p-3">
+              <p className="w-full text-center">Reserves</p>
+              <p className="w-full text-center">7%</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

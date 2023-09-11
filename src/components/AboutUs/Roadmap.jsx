@@ -35,7 +35,7 @@ const Roadmap = () => {
         <div className="relative flex flex-col justify-center w-full gap-4 m-1 lg:gap-10 g-8 ">
           <div className="flex flex-col items-center justify-center w-full gap-4 lg:flex-row sm:gap-2 lg:gap-10">
             <div
-              className="flex flex-col justify-start w-full h-full p-2 border border-orange-700 rounded-lg backdrop-blur-md lg:h-60"
+              className="flex flex-col justify-start w-full h-full p-2 border border-orange-700 rounded-lg backdrop-blur-lg lg:h-60"
               data-aos="fade-left"
               data-aos-duration="1000"
               data-aos-delay="400"
@@ -55,7 +55,7 @@ const Roadmap = () => {
               </ul>
             </div>
             <div
-              className="flex flex-col justify-start w-full h-full p-2 border border-orange-700 rounded-lg backdrop-blur-md lg:h-60"
+              className="flex flex-col justify-start w-full h-full p-2 border border-orange-700 rounded-lg backdrop-blur-lg lg:h-60"
               data-aos="fade-down"
               data-aos-duration="1000"
               data-aos-delay="400"
@@ -74,7 +74,7 @@ const Roadmap = () => {
               </ul>
             </div>
             <div
-              className="flex flex-col justify-start w-full h-full p-2 border border-orange-700 rounded-lg backdrop-blur-md lg:h-60"
+              className="flex flex-col justify-start w-full h-full p-2 border border-orange-700 rounded-lg backdrop-blur-lg lg:h-60"
               data-aos="fade-right"
               data-aos-duration="1000"
               data-aos-delay="400"
