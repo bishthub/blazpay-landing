@@ -1,12 +1,12 @@
-import React from 'react';
-import back1 from '../assets/heroBack.png';
-import mobile1 from '../assets/mobile_4.png';
-import mobile2 from '../assets/mobile_5.png';
+import React from "react";
+import back1 from "../assets/heroBack.png";
+import mobile1 from "../assets/mobile_4.png";
+import mobile2 from "../assets/mobile_5.png";
 const Hero = () => {
   return (
     <>
-      <div className="mt-8 md:bg-hero-pattern bg-cover">
-        <div className="justify-between px-4  md:mx-auto lg:max-w-7xl md:flex md:px-8 font-bvmp pb-20">
+      <div className="mt-8 bg-cover md:bg-hero-pattern">
+        <div className="justify-between px-4 pb-20 md:mx-auto lg:max-w-7xl md:flex md:px-8 font-bvmp">
           <div
             className=" rounded-3xl md:w-[55%] overflow-hidden bg-[#8E8C8C]/25 "
             data-aos="fade-right"
@@ -15,10 +15,10 @@ const Hero = () => {
           >
             <div className="p-6 ">
               <div className=" bg-gradient-to-r from-[#FF3503] to-yellow-500 mx-auto px-8 rounded-lg py-6 mb-8">
-                <h1 className="text-xl mb-8 md:text-6xl md:p-6 font-bold">
+                <h1 className="mb-8 text-xl font-bold md:text-6xl md:p-6">
                   Crypto Payments made easy
                 </h1>
-                <p className="text-xs md:text-lg font-thin md:px-6">
+                <p className="text-xs font-thin md:text-lg md:px-6">
                   Blazpay, a leading crypto payment gateway and end -to- end
                   financial solution provider, is redefining the way businesses
                   and individuals engage with digital assets thus offering a
@@ -28,7 +28,7 @@ const Hero = () => {
                 </p>
               </div>
             </div>
-            <div className="bg-white p-10 ">
+            <div className="p-10 bg-white ">
               <div className="bg flex justify-center bg-black mx-auto max-w-md rounded-lg p-2 cursor-pointer transition ease-linear hover:scale-[1.02] drop-shadow-md">
                 <a href="#" className="text-center">
                   Get Started
@@ -42,7 +42,7 @@ const Hero = () => {
             data-aos-duration="1000"
             data-aos-easing="ease-in-sine"
           >
-            <div className="b1 relative">
+            <div className="relative b1">
               <img
                 src={mobile1}
                 alt="mobile1"

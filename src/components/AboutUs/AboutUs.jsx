@@ -10,7 +10,7 @@ import Faq from "./Faq";
 
 const AboutUs = () => {
   return (
-    <>
+    <div className="w-full">
       <Navbar />
       <About />
       <Gradient />
@@ -21,7 +21,7 @@ const AboutUs = () => {
       <TokeNomics />
       <Faq />
       <Footer />
-    </>
+    </div>
   );
 };
 

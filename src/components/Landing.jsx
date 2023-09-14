@@ -10,7 +10,7 @@ import Footer from "./Footer";
 const Landing = () => {
   return (
     <>
-      <div className="">
+      <div className="w-full">
         <Navbar />
         <Hero />
         <Gradient />

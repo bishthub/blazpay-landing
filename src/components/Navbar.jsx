@@ -6,7 +6,7 @@ const Navbar = () => {
   const [navbar, setNavbar] = useState();
   return (
     <>
-      <nav className="w-full mt-4 shadow font-bvmp" data-aos="fade-down">
+      <nav className="w-full mt-4 shadow " data-aos="fade-down">
         <div className="justify-between px-4 mx-4 md:mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
           <div>
             <div className="flex items-center justify-between py-3 md:py-5 md:block">
@@ -110,7 +110,11 @@ const Navbar = () => {
                       <span className="absolute bottom-0 left-0 w-24 h-24 -ml-10 bg-[#eb7e3f] rounded-full blur-md"></span>
                       <span className="absolute bottom-0 right-0 w-24 h-24 -mr-10 bg-[#F3B53D] rounded-full blur-md"></span>
                     </span>
-                    <span className="relative text-white">Buy/Sell Crypto</span>
+                    <Link to="/claim-entry-pass" className="w-full">
+                      <span className="relative text-white">
+                        Claim Entry Pass
+                      </span>
+                    </Link>
                   </a>
                 </li>
               </ul>
