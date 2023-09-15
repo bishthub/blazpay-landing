@@ -8,9 +8,10 @@ import Instagram from "../assets/insta.svg";
 
 const Footer = () => {
   return (
-    <div className="flex">
+    <div className="flex" style={{ zIndex: "9999" }}>
       <div
         className={`bg-gradient-to-r from-[#FF3503] to-yellow-500 shadow p-4 w-full`}
+        style={{ zIndex: "9999" }}
       >
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-col md:flex-row">

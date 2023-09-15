@@ -1,9 +1,9 @@
 import React from "react";
-import Token from "../../assets/pie.png";
+import Token from "../../assets/tokenNew.png";
 
 const TokeNomics = () => {
   return (
-    <div className="flex flex-col w-full p-8 mt-2 bg-cover md:p-20 bg-pattern-2 ">
+    <div className="flex flex-col w-full p-8 bg-cover md:p-20 bg-pattern-2 h-screen">
       <h1
         data-aos="zoom-in"
         data-aos-easing="linear"
@@ -14,14 +14,9 @@ const TokeNomics = () => {
       </h1>
 
       <div className="flex flex-col items-center justify-center w-full gap-5 md:flex-row">
-        <img
-          className="mr-20 md:m-0"
-          src={Token}
-          alt=""
-          style={{ width: "25rem" }}
-        />
+        <img src={Token} alt="" style={{ width: "30rem" }} />
         <div
-          className="w-1/2 py-2 m-auto mb-20 border-2 border-orange-700 rounded-xl"
+          className="w-3/4 md:w-1/2 py-2 m-auto border-2 border-orange-700 rounded-xl"
           data-aos="fade-down"
           data-aos-duration="1000"
           data-aos-delay="800"

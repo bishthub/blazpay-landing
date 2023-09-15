@@ -2,6 +2,7 @@ import React from "react";
 import back1 from "../assets/heroBack.png";
 import mobile1 from "../assets/mobile_4.png";
 import mobile2 from "../assets/mobile_5.png";
+import laptop from "../assets/laptop.png";
 const Hero = () => {
   return (
     <>
@@ -42,8 +43,8 @@ const Hero = () => {
             data-aos-duration="1000"
             data-aos-easing="ease-in-sine"
           >
-            <div className="relative b1">
-              <img
+            <div className="flex items-center justify-center w-full h-full">
+              {/* <img
                 src={mobile1}
                 alt="mobile1"
                 className="scale-[0.7] md:scale-[1]"
@@ -52,7 +53,8 @@ const Hero = () => {
                 src={mobile2}
                 alt="mobile2"
                 className="absolute top-48 left-11 md:left-48 scale-[0.7] md:scale-[1]"
-              />
+              /> */}
+              <img className=" mx-auto my-auto" src={laptop} alt="" />
             </div>
           </div>
         </div>

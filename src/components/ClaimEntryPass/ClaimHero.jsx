@@ -7,6 +7,9 @@ const ClaimHero = () => {
     <div
       className="flex flex-col items-center justify-center w-full gap-8 md:flex-row md:gap-0"
       style={{ height: "90vh" }}
+      data-aos="fade-right"
+      data-aos-duration="1000"
+      data-aos-easing="ease-in"
     >
       <div className="flex items-center justify-center w-full">
         <div className="flex flex-col items-center justify-center w-3/4 gap-5 px-4 py-8 m-auto bg-gray-800 border-2 border-orange-700 rounded-lg">

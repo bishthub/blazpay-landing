@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Gradient from "../utilities/Gradient";
-import logo from "../assets/logo.png";
+import logo from "../assets/latestlogo.png";
 import { Link } from "react-router-dom";
 const Navbar = () => {
   const [navbar, setNavbar] = useState();
@@ -11,13 +11,13 @@ const Navbar = () => {
           <div>
             <div className="flex items-center justify-between py-3 md:py-5 md:block">
               <div className="flex items-center justify-center">
-                <img src={logo} alt="" className="h-5 " />
+                <img src={logo} alt="" className=" w-40" />
 
-                <a href="#">
+                {/* <a href="#">
                   <h2 className="text-2xl ">
                     <span className="font-bold">laz</span>Pay
                   </h2>
-                </a>
+                </a> */}
               </div>
               <div className="md:hidden">
                 <button

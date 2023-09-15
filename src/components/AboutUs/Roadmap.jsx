@@ -7,10 +7,15 @@ import LeftArrowImg from "../../assets/leftarr.png";
 import LineImg from "../../assets/line.png";
 import Ellipse from "../../assets/ellipsenew.png";
 import Rect from "../../assets/rect.png";
+// min-h-screen
 
 const Roadmap = () => {
   return (
-    <div className="relative flex-col justify-center w-full min-h-screen gap-6 p-20 mt-8 bg-center bg-cover bg-pattern-2">
+    <div
+      className="relative flex-col justify-center w-full  gap-6 p-20 mt-8 bg-center bg-cover bg-pattern-2 min-h-screen
+  
+    "
+    >
       <h1
         data-aos="zoom-in"
         data-aos-easing="linear"

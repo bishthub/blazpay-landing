@@ -1,15 +1,15 @@
-import React from 'react';
-import card from '../assets/cards.png';
-import cardShadow from '../assets/cardShadow.png';
+import React from "react";
+import card from "../assets/cards.png";
+import cardShadow from "../assets/cardShadow.png";
 
-import apple from '../assets/apple.png';
-import google from '../assets/google.png';
+import apple from "../assets/apple.png";
+import google from "../assets/google.png";
 
 const Description = () => {
   return (
     <>
-      <div className="mt-2 md:bg-pattern-2 bg-cover">
-        <div className="justify-between  px-4  md:mx-auto lg:max-w-7xl md:flex md:px-8 font-bvmp pb-20">
+      <div className="mt-2 bg-feature-back bg-cover ">
+        <div className="justify-between  px-4  md:mx-auto lg:max-w-7xl md:flex md:px-8 font-bvmp ">
           <div
             className=" flex-col  md:w-[55%] "
             data-aos="zoom-out-right"
@@ -31,7 +31,7 @@ const Description = () => {
             </div>
             <div className="">
               <h2 className="md:hidden text-3xl font-bvmp mb-2 ml-2">
-                {' '}
+                {" "}
                 This is heading
               </h2>
             </div>

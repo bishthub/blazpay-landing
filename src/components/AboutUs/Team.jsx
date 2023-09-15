@@ -6,12 +6,12 @@ import "./about.css";
 
 const Team = () => {
   return (
-    <div className="flex flex-col justify-center w-full gap-3 p-8 mt-2 bg-cover md:p-20 bg-pattern-2 md:gap-10 ">
+    <div className="flex flex-col justify-center items-center w-full gap-3 p-8 bg-cover md:p-20 bg-pattern-2 md:gap-10 h-screen  ">
       <h1
         data-aos="zoom-in"
         data-aos-easing="linear"
         data-aos-duration="1000"
-        className="mb-6 text-3xl font-semibold top-5 md:text-5xl md:mb-8"
+        className=" text-3xl font-semibold  md:text-5xl"
       >
         PARTNERS
       </h1>
@@ -22,13 +22,8 @@ const Team = () => {
             data-aos="fade-down"
             data-aos-duration="1000"
             data-aos-delay="400"
-            style={{
-              width: "14rem",
-              border: "8px solid orange",
-              borderRadius: "50%",
-              padding: "1rem",
-              backgroundColor: "white",
-            }}
+            className="w-40 md:w-56 rounded-full p-2 md:p-4 bg-white "
+            style={{ border: "8px solid orange" }}
             src={img1}
             alt=""
           />
@@ -39,7 +34,7 @@ const Team = () => {
         </div>
 
         <div className="flex flex-row items-center justify-center gap-5 md:gap-10 md:flex-col">
-          <img
+          {/* <img
             data-aos="fade-down"
             data-aos-duration="1000"
             data-aos-delay="400"
@@ -52,14 +47,23 @@ const Team = () => {
             }}
             src={img2}
             alt=""
-          />
+          /> */}
           {/* <div className="flex flex-col gap-5">
             <h2>Name</h2>
             <h2>Position</h2>
           </div> */}
+          <img
+            data-aos="fade-down"
+            data-aos-duration="1000"
+            data-aos-delay="400"
+            className="w-40 md:w-56 rounded-full p-2 md:p-4 bg-white "
+            style={{ border: "8px solid orange" }}
+            src={img2}
+            alt=""
+          />
         </div>
         <div className="flex items-center justify-center gap-5 md:gap-10 md:flex-col">
-          <img
+          {/* <img
             data-aos="fade-down"
             data-aos-duration="1000"
             data-aos-delay="400"
@@ -70,6 +74,15 @@ const Team = () => {
               padding: "1rem",
               backgroundColor: "white",
             }}
+            src={img3}
+            alt=""
+          /> */}
+          <img
+            data-aos="fade-down"
+            data-aos-duration="1000"
+            data-aos-delay="400"
+            className="w-40 md:w-56 rounded-full p-2 md:p-4 bg-white "
+            style={{ border: "8px solid orange" }}
             src={img3}
             alt=""
           />

@@ -6,7 +6,12 @@ const TestNetCard = ({}) => {
 
 const MainNetCard = () => {
   return (
-    <div className="flex items-center justify-center w-full">
+    <div
+      className="flex items-center justify-center w-full"
+      data-aos="fade-right"
+      data-aos-duration="1000"
+      data-aos-easing="ease-in"
+    >
       <div className="flex flex-col items-center justify-center w-1/2 gap-4 p-5 m-2  bg-gradient-to-r from-[#FF3503] to-yellow-500 rounded-lg">
         <h1>Test Chain Entry Pass</h1>
         <button className="flex items-center justify-center px-10 py-2 text-black bg-white rounded-lg">
@@ -25,7 +30,7 @@ const ClaimMint = () => {
   };
 
   return (
-    <div className="w-full px-3 py-6" style={{ height: "100vh" }}>
+    <div className="w-full px-3 py-6 min-h-screen">
       <div className="flex flex-col items-center w-full h-full p-2 bg-gray-800 border-2 border-orange-700 rounded-lg">
         <div className="flex flex-row items-center w-full gap-5">
           <button
