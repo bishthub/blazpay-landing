@@ -37,7 +37,7 @@ const Blogs = () => {
           src={ellipse}
           alt=""
         />
-        <img
+        {/* <img
           className="absolute hidden md:block "
           style={{
             width: "7rem",
@@ -47,7 +47,7 @@ const Blogs = () => {
           }}
           src={ellipse}
           alt=""
-        />
+        /> */}
       </div>
     </div>
   );
