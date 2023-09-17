@@ -1,22 +1,22 @@
 import React from "react";
-import back1 from "../assets/heroBack.png";
+import back1 from "../assets/blur.png";
 import mobile1 from "../assets/mobile_4.png";
 import mobile2 from "../assets/mobile_5.png";
 import laptop from "../assets/laptop.png";
 const Hero = () => {
   return (
     <>
-      <div className="mt-8 bg-cover md:bg-hero-pattern">
-        <div className="justify-between px-4 pb-20 md:mx-auto lg:max-w-7xl md:flex md:px-8 font-bvmp">
+      <div className="h-full bg-cover md:bg-hero-pattern md:h-80vh ">
+        <div className="flex flex-col justify-between gap-8 px-4 md:gap-0 md:flex-row md:mx-auto lg:max-w-7xl md:flex md:px-8 font-bvmp ">
           <div
             className=" rounded-3xl md:w-[55%] overflow-hidden bg-[#8E8C8C]/25 "
             data-aos="fade-right"
             data-aos-duration="1000"
             data-aos-easing="ease-in"
           >
-            <div className="p-6 ">
-              <div className=" bg-gradient-to-r from-[#FF3503] to-yellow-500 mx-auto px-8 rounded-lg py-6 mb-8">
-                <h1 className="mb-8 text-xl font-bold md:text-6xl md:p-6">
+            <div className="">
+              <div className=" bg-gradient-to-r from-[#FF3503] to-yellow-500 mx-auto px-8 rounded-lg  mb-8 py-6 md:py-4">
+                <h1 className="text-xl font-bold md:text-6xl md:p-6">
                   Crypto Payments made easy
                 </h1>
                 <p className="text-xs font-thin md:text-lg md:px-6">
@@ -38,12 +38,12 @@ const Hero = () => {
             </div>
           </div>
           <div
-            className="  rounded-tl-2xl rounded-bl-2xl rounded-br-[50%] md:w-[42%]  mt-8 md:mt-0 bg-gradient-to-t from-[#110C09]/50 to-[#8E8C8C]/25  "
+            className="  rounded-tl-2xl rounded-bl-2xl rounded-br-[50%] md:w-[42%]  md:mt-0 bg-gradient-to-t from-[#110C09]/50 to-[#8E8C8C]/25  "
             data-aos="fade-left"
             data-aos-duration="1000"
             data-aos-easing="ease-in-sine"
           >
-            <div className="flex items-center justify-center w-full h-full">
+            <div className="relative flex items-center justify-center w-full h-full">
               {/* <img
                 src={mobile1}
                 alt="mobile1"
@@ -54,7 +54,8 @@ const Hero = () => {
                 alt="mobile2"
                 className="absolute top-48 left-11 md:left-48 scale-[0.7] md:scale-[1]"
               /> */}
-              <img className=" mx-auto my-auto" src={laptop} alt="" />
+              <img className="mx-auto my-auto " src={laptop} alt="" />
+              {/* <img className="absolute" src={black1} alt="" /> */}
             </div>
           </div>
         </div>

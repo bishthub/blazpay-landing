@@ -3,20 +3,20 @@ import Token from "../../assets/tokenNew.png";
 
 const TokeNomics = () => {
   return (
-    <div className="flex flex-col w-full p-8 bg-cover md:p-20 bg-pattern-2 h-screen">
+    <div className="flex flex-col justify-center w-full h-screen gap-3 p-8 bg-cover md:p-20 bg-pattern-2">
       <h1
         data-aos="zoom-in"
         data-aos-easing="linear"
         data-aos-duration="1000"
-        className="mb-6 text-3xl font-semibold top-5 md:text-5xl md:mb-8"
+        className="text-2xl font-semibold top-5 md:text-5xl"
       >
-        TOKENNOMICS
+        TOKENOMICS
       </h1>
 
       <div className="flex flex-col items-center justify-center w-full gap-5 md:flex-row">
-        <img src={Token} alt="" style={{ width: "30rem" }} />
+        <img src={Token} alt="" style={{ width: "35rem" }} />
         <div
-          className="w-3/4 md:w-1/2 py-2 m-auto border-2 border-orange-700 rounded-xl"
+          className="w-3/4 py-2 m-auto border-2 border-orange-700 md:w-1/2 rounded-xl"
           data-aos="fade-down"
           data-aos-duration="1000"
           data-aos-delay="800"

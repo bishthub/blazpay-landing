@@ -6,12 +6,12 @@ import "./about.css";
 
 const Team = () => {
   return (
-    <div className="flex flex-col justify-center items-center w-full gap-3 p-8 bg-cover md:p-20 bg-pattern-2 md:gap-10 h-screen  ">
+    <div className="flex flex-col items-center justify-center w-full h-screen gap-3 p-8 bg-cover md:p-20 bg-pattern-2 md:gap-10 ">
       <h1
         data-aos="zoom-in"
         data-aos-easing="linear"
         data-aos-duration="1000"
-        className=" text-3xl font-semibold  md:text-5xl"
+        className="w-full mr-auto text-3xl font-semibold md:text-5xl"
       >
         PARTNERS
       </h1>
@@ -22,7 +22,7 @@ const Team = () => {
             data-aos="fade-down"
             data-aos-duration="1000"
             data-aos-delay="400"
-            className="w-40 md:w-56 rounded-full p-2 md:p-4 bg-white "
+            className="w-40 p-2 bg-white rounded-full md:w-56 md:p-4 "
             style={{ border: "8px solid orange" }}
             src={img1}
             alt=""
@@ -56,7 +56,7 @@ const Team = () => {
             data-aos="fade-down"
             data-aos-duration="1000"
             data-aos-delay="400"
-            className="w-40 md:w-56 rounded-full p-2 md:p-4 bg-white "
+            className="w-40 p-2 bg-white rounded-full md:w-56 md:p-4 "
             style={{ border: "8px solid orange" }}
             src={img2}
             alt=""
@@ -81,7 +81,7 @@ const Team = () => {
             data-aos="fade-down"
             data-aos-duration="1000"
             data-aos-delay="400"
-            className="w-40 md:w-56 rounded-full p-2 md:p-4 bg-white "
+            className="w-40 p-2 bg-white rounded-full md:w-56 md:p-4 "
             style={{ border: "8px solid orange" }}
             src={img3}
             alt=""

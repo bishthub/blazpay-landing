@@ -10,7 +10,7 @@ import Faq from "./Faq";
 
 const AboutUs = () => {
   return (
-    <div className="w-full">
+    <div className="w-full font-bvmp">
       <Navbar />
       <About />
       <Gradient />
