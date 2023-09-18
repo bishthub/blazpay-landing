@@ -7,10 +7,10 @@ export default {
         bvmp: ["Be Vietnam Pro", "sans-serif"],
       },
       backgroundImage: {
-        "hero-pattern": "url('/assets/heroBack.png')",
-        "pattern-2": "url('/assets/descBg.png')",
+        "hero-pattern": "url('/heroBack.png')",
+        "pattern-2": "url('/descBg.png')",
         "feature-back": "url('/featuresBack.png')",
-        "why-us": "url('/assets/whyusbg.png')",
+        "why-us": "url('/whyusbg.png')",
       },
     },
   },
