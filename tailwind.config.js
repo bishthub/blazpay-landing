@@ -9,7 +9,7 @@ export default {
       backgroundImage: {
         "hero-pattern": "url('/assets/heroBack.png')",
         "pattern-2": "url('/assets/descBg.png')",
-        "feature-back": "url('/assets/featuresBack.png')",
+        "feature-back": "url('/featuresBack.png')",
         "why-us": "url('/assets/whyusbg.png')",
       },
     },
