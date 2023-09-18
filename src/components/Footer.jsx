@@ -8,7 +8,7 @@ import Instagram from "../assets/insta.svg";
 
 const Footer = () => {
   // Define the social media URLs
-  const twitterUrl = "https://twitter.com/YourTwitterAccount";
+  const twitterUrl = "https://twitter.com/BlazpayOfficial";
   const linkedInUrl = "https://www.linkedin.com/in/YourLinkedInProfile";
   const discordUrl = "https://discord.com/YourDiscordServer";
   const telegramUrl = "https://t.me/YourTelegramChannel";

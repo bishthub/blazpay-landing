@@ -1,7 +1,7 @@
 import React from "react";
-import img1 from "../../assets/teamimg1.png";
-import img2 from "../../assets/teamimg2.png";
-import img3 from "../../assets/teamimg3.png";
+import img1 from "../../assets/baldeep.jpg";
+import img2 from "../../assets/rishabh.jpg";
+import img3 from "../../assets/bisht.png";
 import "./about.css";
 
 const Team = () => {
@@ -13,7 +13,7 @@ const Team = () => {
         data-aos-duration="1000"
         className="w-full mr-auto text-3xl font-semibold md:text-5xl"
       >
-        PARTNERS
+        TEAM
       </h1>
 
       <div className="container flex flex-col justify-center w-full gap-20 m-auto md:gap-40 md:flex-row md:items-center md:justify-center">
@@ -27,43 +27,13 @@ const Team = () => {
             src={img1}
             alt=""
           />
-          {/* <div className="flex flex-col gap-5">
-            <h2>Name</h2>
-            <h2>Position</h2>
-          </div> */}
-        </div>
-
-        <div className="flex flex-row items-center justify-center gap-5 md:gap-10 md:flex-col">
-          {/* <img
-            data-aos="fade-down"
-            data-aos-duration="1000"
-            data-aos-delay="400"
-            style={{
-              width: "15rem",
-              border: "8px solid orange",
-              borderRadius: "50%",
-              padding: "1rem",
-              backgroundColor: "white",
-            }}
-            src={img2}
-            alt=""
-          /> */}
-          {/* <div className="flex flex-col gap-5">
-            <h2>Name</h2>
-            <h2>Position</h2>
-          </div> */}
-          <img
-            data-aos="fade-down"
-            data-aos-duration="1000"
-            data-aos-delay="400"
-            className="w-40 p-2 bg-white rounded-full md:w-56 md:p-4 "
-            style={{ border: "8px solid orange" }}
-            src={img2}
-            alt=""
-          />
+          <div className="flex flex-col gap-5">
+            <h2>Baldeep Sethi</h2>
+            <h2>CEO</h2>
+          </div>
         </div>
         <div className="flex items-center justify-center gap-5 md:gap-10 md:flex-col">
-          {/* <img
+          <img
             data-aos="fade-down"
             data-aos-duration="1000"
             data-aos-delay="400"
@@ -76,20 +46,32 @@ const Team = () => {
             }}
             src={img3}
             alt=""
-          /> */}
+          />
+
+          <div className="flex flex-col gap-5">
+            <h2>Shubham Bisht</h2>
+            <h2>CTO</h2>
+          </div>
+        </div>
+        <div className="flex flex-row items-center justify-center gap-5 md:gap-10 md:flex-col">
           <img
             data-aos="fade-down"
             data-aos-duration="1000"
             data-aos-delay="400"
-            className="w-40 p-2 bg-white rounded-full md:w-56 md:p-4 "
-            style={{ border: "8px solid orange" }}
-            src={img3}
+            style={{
+              width: "15rem",
+              border: "8px solid orange",
+              borderRadius: "50%",
+              padding: "1rem",
+              backgroundColor: "white",
+            }}
+            src={img2}
             alt=""
           />
-          {/* <div className="flex flex-col gap-5">
-            <h2>Name</h2>
-            <h2>Position</h2>
-          </div> */}
+          <div className="flex flex-col gap-5">
+            <h2>Rishabh Bhatti</h2>
+            <h2>CFO</h2>
+          </div>
         </div>
       </div>
       <div className="p-2 m-auto font-semibold border-2 border-orange-700 rounded-lg backdrop-blur-lg">
