@@ -32,10 +32,10 @@ const Description = () => {
             <div className="">
               <h2 className="mb-2 ml-2 text-3xl md:hidden font-bvmp">
                 {" "}
-                This is heading
+                Revolutionising the Financial Landscape
               </h2>
             </div>
-            <div className="md:absolute top-56">
+            <div className="md:absolute top-56 py-4">
               <div
                 className="  rounded-2xl  bg-gradient-to-t from-[#110C09] to-[#8E8C8C]/25 px-4  "
                 data-aos="fade-down"
@@ -60,7 +60,7 @@ const Description = () => {
                   </li>
                 </ul>
               </div>
-              <div className="flex gap-5 mx-auto justify-evenly">
+              <div className="flex gap-5 mx-auto justify-evenly py-4">
                 <a href="">
                   <img src={apple} alt="" className="cursor-pointer" />
                 </a>

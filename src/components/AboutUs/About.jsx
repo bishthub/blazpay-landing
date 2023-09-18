@@ -96,12 +96,17 @@ const About = () => {
           alt="Ellipse"
         /> */}
         <p className="text-white-700 md:text-xl">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur
-          sit sint porro odio non sequi expedita dolores. Temporibus blanditiis
-          ducimus, iusto deleniti provident tempora sapiente ipsam aspernatur
-          nam impedit dolorem mollitia esse debitis assumenda odio quo voluptas
-          maiores quaerat fugiat! Fugit non vel quisquam ducimus ratione quos
-          hic maiores delectus.
+          Blazpay stands as an advanced online platform that seamlessly converts
+          traditional fiat currencies like USD, Euro, and INR into
+          cryptocurrencies and back. Beyond currency conversion, it offers
+          secure storage, trading, real-time market data, and transaction
+          history tracking. Blazpay's crypto gateway aids enterprises in
+          accepting diverse cryptocurrencies, with features like the proprietary
+          token "BLAZ," NFT rewards, merchant payment APIs, and wallet swap
+          integration. It simplifies cryptocurrency onboarding, safeguarding
+          digital assets, and holds the potential to revolutionize the global
+          economy through secure, cost-effective, and inclusive transactions,
+          promising a pivotal role in the evolving financial landscape.
         </p>
       </div>
     </div>

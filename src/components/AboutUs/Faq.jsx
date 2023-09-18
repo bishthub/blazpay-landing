@@ -19,10 +19,17 @@ const Faq = () => {
             data-aos-duration="1000"
             data-aos-delay="400"
           >
-            <h1 className="text-base md:text-xl">What is Lorem Ipsum?</h1>
+            <h1 className="text-base md:text-xl">
+              How Blazpay is different from other gateways.?
+            </h1>
             <p className="text-xs md:text-base">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry.
+              Blazpay stands out in the crypto gateway market with robust
+              security, versatile features, and all-in-one convenience. It
+              ensures user fund safety, offers an Exchange, swap, and NFT
+              marketplace, supports multiple cryptocurrencies, and provides
+              seamless integration, prompt settlements, and detailed analytics.
+              With testnet options, it's a secure, flexible, and efficient
+              choice for crypto gateway needs.
             </p>
           </div>
           <div
@@ -31,10 +38,16 @@ const Faq = () => {
             data-aos-duration="1000"
             data-aos-delay="400"
           >
-            <h1 className="text-base md:text-xl">What is Lorem Ipsum?</h1>
+            <h1 className="text-base md:text-xl">
+              How do we plan to implement KYC?
+            </h1>
             <p className="text-xs md:text-base">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry.
+              Our KYC implementation will roll out gradually, beginning with the
+              testnet phase where users will submit basic documents for
+              verification. However, once the mainnet is live, an extensive KYC
+              process will be enforced, involving video verification, government
+              ID, and banking documents. This approach enhances security and
+              compliance on the platform.
             </p>
           </div>
         </div>
@@ -45,10 +58,15 @@ const Faq = () => {
             data-aos-duration="1000"
             data-aos-delay="400"
           >
-            <h1 className="text-base md:text-xl">What is Lorem Ipsum?</h1>
+            <h1 className="text-base md:text-xl">
+              What is Testnet V1 and testnet V2?
+            </h1>
             <p className="text-xs md:text-base">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry.
+              Blazpay provides two testnet environments, Testnet V1 and Testnet
+              V2, catering to users and merchants. These testnets ensure secure,
+              reliable, and user-friendly payment integration, allowing thorough
+              application testing before launching, contributing to a seamless
+              payment experience.
             </p>
           </div>
           <div
@@ -57,10 +75,17 @@ const Faq = () => {
             data-aos-duration="1000"
             data-aos-delay="400"
           >
-            <h1 className="text-base md:text-xl">What is Lorem Ipsum?</h1>
+            <h1 className="text-base md:text-xl">
+              What is merchant account Testnet V2?
+            </h1>
             <p className="text-xs md:text-base">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry.
+              Blazpay's Merchant Account Testnet V2 provides a secure sandbox
+              for businesses and developers to test and integrate applications
+              with virtual currency transactions. KYC is required for security,
+              and users get a testnet pass for access. It closely resembles the
+              live environment, facilitating reliable and comprehensive testing
+              of payment gateway operations, including error handling and
+              dispute resolution.
             </p>
           </div>
         </div>
