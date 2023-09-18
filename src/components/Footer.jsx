@@ -7,6 +7,13 @@ import Telegram from "../assets/telegram.svg";
 import Instagram from "../assets/insta.svg";
 
 const Footer = () => {
+  // Define the social media URLs
+  const twitterUrl = "https://twitter.com/YourTwitterAccount";
+  const linkedInUrl = "https://www.linkedin.com/in/YourLinkedInProfile";
+  const discordUrl = "https://discord.com/YourDiscordServer";
+  const telegramUrl = "https://t.me/YourTelegramChannel";
+  const instagramUrl = "https://www.instagram.com/YourInstagramAccount";
+
   return (
     <div className="flex" style={{ zIndex: "9999" }}>
       <div
@@ -20,21 +27,36 @@ const Footer = () => {
                 <img src={logoImage} alt="Logo" className="w-[60%]" />
               </div>
               <div className="flex mb-4 ml-5 space-x-3 md:space-x-5 md:ml-0">
-                <div className="p-4 bg-gray-200 rounded-full">
-                  <img src={Twitter} alt="Twitter" className="w-auto h-auto" />
-                </div>
-                <div className="p-4 bg-gray-200 rounded-full">
-                  <img src={LinkedIn} alt="Telegram" className="w-5 h-5" />
-                </div>
-                <div className="p-4 bg-gray-200 rounded-full">
-                  <img src={Discord} alt="Discord" className="w-5 h-5" />
-                </div>
-                <div className="p-4 bg-gray-200 rounded-full">
-                  <img src={Telegram} alt="Instagram" className="w-5 h-5" />
-                </div>
-                <div className="p-4 bg-gray-200 rounded-full">
-                  <img src={Instagram} alt="LinkedIn" className="w-5 h-5" />
-                </div>
+                {/* Add anchor tags with href and target="_blank" */}
+                <a href={twitterUrl} target="_blank" rel="noopener noreferrer">
+                  <div className="p-4 bg-gray-200 rounded-full">
+                    <img src={Twitter} alt="Twitter" className="w-5 h-5" />
+                  </div>
+                </a>
+                <a href={linkedInUrl} target="_blank" rel="noopener noreferrer">
+                  <div className="p-4 bg-gray-200 rounded-full">
+                    <img src={LinkedIn} alt="Telegram" className="w-5 h-5" />
+                  </div>
+                </a>
+                <a href={discordUrl} target="_blank" rel="noopener noreferrer">
+                  <div className="p-4 bg-gray-200 rounded-full">
+                    <img src={Discord} alt="Discord" className="w-5 h-5" />
+                  </div>
+                </a>
+                <a href={telegramUrl} target="_blank" rel="noopener noreferrer">
+                  <div className="p-4 bg-gray-200 rounded-full">
+                    <img src={Telegram} alt="Instagram" className="w-5 h-5" />
+                  </div>
+                </a>
+                <a
+                  href={instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <div className="p-4 bg-gray-200 rounded-full">
+                    <img src={Instagram} alt="LinkedIn" className="w-5 h-5" />
+                  </div>
+                </a>
               </div>
               <div className="flex md:w-[65%] justify-center text-start">
                 Blazpay emerges as an all-encompassing cryptocurrency platform,
@@ -42,26 +64,6 @@ const Footer = () => {
                 cryptocurrency transactions and investments.
               </div>
             </div>
-            {/* <div className="flex flex-row items-center justify-center flex-1 space-x-1">
-              <div className="flex flex-col items-center justify-center w-1/2 p-4 space-y-5">
-                <div>Menu</div>
-                <div>Menu</div>
-                <div>Menu</div>
-                <div>Menu</div>
-              </div>
-              <div className="flex flex-col items-center justify-center w-1/2 p-4 space-y-5">
-                <div>Menu</div>
-                <div>Menu</div>
-                <div>Menu</div>
-                <div>Menu</div>
-              </div>
-              <div className="flex flex-col items-center justify-center w-1/2 p-4 space-y-5">
-                <div>Menu</div>
-                <div>Menu</div>
-                <div>Menu</div>
-                <div>Menu</div>
-              </div>
-            </div> */}
           </div>
         </div>
       </div>
