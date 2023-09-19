@@ -6,7 +6,7 @@ import "./about.css";
 
 const Team = () => {
   return (
-    <div className="flex flex-col items-center justify-center w-full h-screen gap-3 p-8 bg-cover md:p-20 bg-pattern-2 md:gap-10 ">
+    <div className="flex flex-col items-center justify-center w-full min-h-screen gap-3 p-8 bg-cover md:h-screen md:p-20 bg-pattern-2 md:gap-10 ">
       <h1
         data-aos="zoom-in"
         data-aos-easing="linear"
@@ -22,12 +22,16 @@ const Team = () => {
             data-aos="fade-down"
             data-aos-duration="1000"
             data-aos-delay="400"
-            className="w-40 p-2 bg-white rounded-full md:w-56 md:p-4 "
-            style={{ border: "8px solid orange" }}
+            className="w-40 h-40 p-2 bg-white rounded-full md:p-4 md:w-56 md:h-56"
+            style={{
+              border: "8px solid orange",
+              // height: "14rem",
+              // width: "14rem",
+            }}
             src={img1}
             alt=""
           />
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col items-center justify-center gap-5">
             <h2>Baldeep Sethi</h2>
             <h2>CEO</h2>
           </div>
@@ -37,18 +41,20 @@ const Team = () => {
             data-aos="fade-down"
             data-aos-duration="1000"
             data-aos-delay="400"
+            className="w-40 h-40 p-2 bg-white rounded-full md:p-4 md:w-56 md:h-56"
             style={{
-              width: "14rem",
+              // width: "14rem",
+              // height: "14rem",
               border: "8px solid orange",
-              borderRadius: "50%",
-              padding: "1rem",
-              backgroundColor: "white",
+              // borderRadius: "50%",
+              // padding: "1rem",
+              // backgroundColor: "white",
             }}
             src={img3}
             alt=""
           />
 
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col items-center justify-center gap-5">
             <h2>Shubham Bisht</h2>
             <h2>CTO</h2>
           </div>
@@ -58,17 +64,19 @@ const Team = () => {
             data-aos="fade-down"
             data-aos-duration="1000"
             data-aos-delay="400"
+            className="w-40 h-40 p-2 bg-white rounded-full md:p-4 md:w-56 md:h-56"
             style={{
-              width: "15rem",
+              // width: "14rem",
+              // height: "14rem",
               border: "8px solid orange",
-              borderRadius: "50%",
-              padding: "1rem",
-              backgroundColor: "white",
+              // borderRadius: "50%",
+              // padding: "1rem",
+              // backgroundColor: "white",
             }}
             src={img2}
             alt=""
           />
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col items-center justify-center gap-5">
             <h2>Rishabh Bhatti</h2>
             <h2>CFO</h2>
           </div>

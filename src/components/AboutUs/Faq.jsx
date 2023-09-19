@@ -2,19 +2,19 @@ import React from "react";
 
 const Faq = () => {
   return (
-    <div className="flex flex-col justify-center w-full items-center gap-3 p-8  bg-cover md:p-20 bg-pattern-2 md:gap-10 md:h-screen ">
+    <div className="flex flex-col items-center justify-center w-full min-h-screen gap-3 p-8 bg-cover md:p-20 bg-pattern-2 md:gap-10 md:h-screen ">
       <h1
         data-aos="fade-right"
         data-aos-duration="1000"
         data-aos-delay="400"
-        className=" text-3xl font-semibold md:text-5xl "
+        className="w-full mr-auto text-3xl font-semibold md:text-5xl"
       >
         FAQS
       </h1>
-      <div className="flex flex-col items-center justify-center w-3/4 gap-3 m-auto md:gap-8">
+      <div className="flex flex-col items-center justify-center w-full gap-3 m-auto md:gap-8">
         <div className="flex flex-col items-center justify-center gap-3 md:flex-row md:gap-10 ">
           <div
-            className="flex flex-col w-full p-2 rounded-lg bg-gradient-to-br from-gray-800 via-gray-500 to-transparent md:p-8 backdrop-blur-md "
+            className="flex flex-col items-center w-full gap-2 p-2 rounded-lg bg-gradient-to-br from-gray-800 via-gray-500 to-transparent md:p-4 backdrop-blur-md h-full md:h-[13rem]"
             data-aos="fade-right"
             data-aos-duration="1000"
             data-aos-delay="400"
@@ -22,7 +22,7 @@ const Faq = () => {
             <h1 className="text-base md:text-xl">
               How Blazpay is different from other gateways.?
             </h1>
-            <p className="text-xs md:text-base">
+            <p className="text-xs md:text-sm">
               Blazpay stands out in the crypto gateway market with robust
               security, versatile features, and all-in-one convenience. It
               ensures user fund safety, offers an Exchange, swap, and NFT
@@ -33,7 +33,7 @@ const Faq = () => {
             </p>
           </div>
           <div
-            className="flex flex-col w-full p-2 rounded-lg bg-gradient-to-br from-gray-800 via-gray-500 to-transparent md:p-8 backdrop-blur-md"
+            className="flex flex-col w-full gap-2 p-2 rounded-lg bg-gradient-to-br from-gray-800 via-gray-500 to-transparent md:p-4 backdrop-blur-md h-full md:h-[13rem]"
             data-aos="fade-left"
             data-aos-duration="1000"
             data-aos-delay="400"
@@ -41,7 +41,7 @@ const Faq = () => {
             <h1 className="text-base md:text-xl">
               How do we plan to implement KYC?
             </h1>
-            <p className="text-xs md:text-base">
+            <p className="text-xs md:text-sm">
               Our KYC implementation will roll out gradually, beginning with the
               testnet phase where users will submit basic documents for
               verification. However, once the mainnet is live, an extensive KYC
@@ -53,7 +53,7 @@ const Faq = () => {
         </div>
         <div className="flex flex-col items-center justify-center gap-3 md:flex-row md:gap-10">
           <div
-            className="flex flex-col w-full p-2 rounded-lg bg-gradient-to-br from-gray-800 via-gray-500 to-transparent md:p-8 backdrop-blur-md"
+            className="flex flex-col w-full gap-2 p-2 rounded-lg bg-gradient-to-br from-gray-800 via-gray-500 to-transparent md:p-4 backdrop-blur-md h-full md:h-[13rem]"
             data-aos="fade-right"
             data-aos-duration="1000"
             data-aos-delay="400"
@@ -61,7 +61,7 @@ const Faq = () => {
             <h1 className="text-base md:text-xl">
               What is Testnet V1 and testnet V2?
             </h1>
-            <p className="text-xs md:text-base">
+            <p className="text-xs md:text-sm">
               Blazpay provides two testnet environments, Testnet V1 and Testnet
               V2, catering to users and merchants. These testnets ensure secure,
               reliable, and user-friendly payment integration, allowing thorough
@@ -70,7 +70,7 @@ const Faq = () => {
             </p>
           </div>
           <div
-            className="flex flex-col w-full p-2 rounded-lg bg-gradient-to-br from-gray-800 via-gray-500 to-transparent md:p-8 backdrop-blur-md "
+            className="flex flex-col w-full gap-2 p-2 rounded-lg bg-gradient-to-br from-gray-800 via-gray-500 to-transparent md:p-4 backdrop-blur-md h-full md:h-[13rem]"
             data-aos="fade-left"
             data-aos-duration="1000"
             data-aos-delay="400"
@@ -78,7 +78,7 @@ const Faq = () => {
             <h1 className="text-base md:text-xl">
               What is merchant account Testnet V2?
             </h1>
-            <p className="text-xs md:text-base">
+            <p className="text-xs md:text-sm">
               Blazpay's Merchant Account Testnet V2 provides a secure sandbox
               for businesses and developers to test and integrate applications
               with virtual currency transactions. KYC is required for security,

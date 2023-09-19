@@ -3,12 +3,12 @@ import Token from "../../assets/tokenNew.png";
 
 const TokeNomics = () => {
   return (
-    <div className="flex flex-col justify-center w-full h-screen gap-3 p-8 bg-cover md:p-20 bg-pattern-2">
+    <div className="flex flex-col justify-center w-full min-h-screen gap-3 p-8 bg-cover md:h-screen md:p-10 bg-pattern-2">
       <h1
         data-aos="zoom-in"
         data-aos-easing="linear"
         data-aos-duration="1000"
-        className="text-2xl font-semibold top-5 md:text-5xl"
+        className="text-2xl font-semibold top-15 md:text-5xl"
       >
         TOKENOMICS
       </h1>
