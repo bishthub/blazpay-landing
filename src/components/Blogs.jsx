@@ -12,7 +12,10 @@ const Blogs = () => {
   ];
 
   return (
-    <div className="flex flex-col justify-center w-full p-8 bg-cover md:p-20 bg-feature-back relative md:h-screen">
+    <div
+      id="blogs"
+      className="flex flex-col justify-center w-full p-8 bg-cover md:p-20 bg-feature-back relative md:h-screen"
+    >
       <div className="w-full flex flex-col items-center justify-center gap-5">
         <h1 className="w-full font-bold text-5xl mr-auto md:absolute top-2 pl-10">
           Blogs

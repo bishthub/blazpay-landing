@@ -9,6 +9,7 @@ const WhyUs = () => {
   return (
     <>
       <div
+        id="why-us"
         className="bg-why-us bg-cover md:h-screen flex items-center justify-center"
         style={{ zIndex: "9999" }}
       >

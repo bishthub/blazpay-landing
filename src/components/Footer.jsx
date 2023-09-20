@@ -4,15 +4,16 @@ import Twitter from "../assets/twitter_logo.svg";
 import LinkedIn from "../assets/linkedin_logo.svg";
 import Discord from "../assets/discord.svg";
 import Telegram from "../assets/telegram.svg";
-import Instagram from "../assets/insta.svg";
+import Medium from "../assets/medium.svg";
 
 const Footer = () => {
   // Define the social media URLs
   const twitterUrl = "https://twitter.com/BlazpayOfficial";
   const linkedInUrl = "https://www.linkedin.com/in/YourLinkedInProfile";
-  const discordUrl = "https://discord.com/YourDiscordServer";
-  const telegramUrl = "https://t.me/YourTelegramChannel";
+  const discordUrl = "https://discord.gg/kfyWv9hSjm";
+  const telegramUrl = "https://t.me/Blazpay";
   const instagramUrl = "https://www.instagram.com/YourInstagramAccount";
+  const mediumUrl = "https://medium.com/@blazpay";
 
   return (
     <div className="flex" style={{ zIndex: "9999" }}>
@@ -45,16 +46,12 @@ const Footer = () => {
                 </a>
                 <a href={telegramUrl} target="_blank" rel="noopener noreferrer">
                   <div className="p-4 bg-gray-200 rounded-full">
-                    <img src={Telegram} alt="Instagram" className="w-5 h-5" />
+                    <img src={Telegram} alt="Medium" className="w-5 h-5" />
                   </div>
                 </a>
-                <a
-                  href={instagramUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href={mediumUrl} target="_blank" rel="noopener noreferrer">
                   <div className="p-4 bg-gray-200 rounded-full">
-                    <img src={Instagram} alt="LinkedIn" className="w-5 h-5" />
+                    <img src={Medium} alt="LinkedIn" className="w-5 h-5" />
                   </div>
                 </a>
               </div>

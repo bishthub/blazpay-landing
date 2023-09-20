@@ -1,19 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-const TestNetCard = ({}) => {
-  return <div className="w-full"></div>;
+const MainNetCard = ({ entryPass }) => {
+  return (
+    <div className="flex items-center justify-center w-full">
+      <div className="flex flex-col items-center justify-center w-1/2 gap-4 p-5 m-2  bg-gradient-to-r from-[#FF3503] to-yellow-500 rounded-lg">
+        <h1>{entryPass.name}</h1>
+        <button className="flex items-center justify-center px-10 py-2 text-black bg-white rounded-lg">
+          Mint Now
+        </button>
+      </div>
+    </div>
+  );
 };
 
-const MainNetCard = () => {
+const TestNetCard = ({ entryPass }) => {
   return (
-    <div
-      className="flex items-center justify-center w-full"
-      data-aos="fade-right"
-      data-aos-duration="1000"
-      data-aos-easing="ease-in"
-    >
-      <div className="flex flex-col items-center justify-center w-1/2 gap-4 p-5 m-2  bg-gradient-to-r from-[#FF3503] to-yellow-500 rounded-lg">
-        <h1>Test Chain Entry Pass</h1>
+    <div className="w-full">
+      <div className="flex flex-col items-center justify-center w-1/2 gap-4 p-5 m-2 bg-blue-500 rounded-lg">
+        <h1>{entryPass.name}</h1>
         <button className="flex items-center justify-center px-10 py-2 text-black bg-white rounded-lg">
           Mint Now
         </button>
@@ -24,6 +29,15 @@ const MainNetCard = () => {
 
 const ClaimMint = () => {
   const [select, setSelect] = useState(true);
+  const [entryPassData, setEntryPassData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://34.93.103.113:3000/api/entrypass/entry-passes")
+      .then((response) => {
+        setEntryPassData(response.data);
+      });
+  }, []);
 
   const HandleSelect = () => {
     setSelect(!select);
@@ -41,7 +55,7 @@ const ClaimMint = () => {
                 : "bg-white text-black"
             }`}
           >
-            TestNet
+            MainNet
           </button>
           <button
             onClick={HandleSelect}
@@ -51,32 +65,20 @@ const ClaimMint = () => {
                 : "bg-white text-black"
             }`}
           >
-            MainNet
+            TestNet
           </button>
         </div>
-        {select ? (
-          <div className="grid justify-center w-full grid-cols-1 m-auto md:grid-cols-2">
-            <MainNetCard />
-            <MainNetCard />
-            <MainNetCard />
-            <MainNetCard />
-            <MainNetCard />
-            <MainNetCard />
-            <MainNetCard />
-            <MainNetCard />
-          </div>
-        ) : (
-          <div className="grid justify-center w-full grid-cols-1 m-auto md:grid-cols-2">
-            <MainNetCard />
-            <MainNetCard />
-            <MainNetCard />
-            <MainNetCard />
-            <MainNetCard />
-            <MainNetCard />
-            <MainNetCard />
-            <MainNetCard />
-          </div>
-        )}
+        <div className="grid justify-center w-full grid-cols-1 m-auto md:grid-cols-2">
+          {entryPassData.map((entryPass) => {
+            // Conditionally render cards based on the type
+            if (select && entryPass.type === "mainnet") {
+              return <MainNetCard key={entryPass._id} entryPass={entryPass} />;
+            } else if (!select && entryPass.type === "testnet") {
+              return <TestNetCard key={entryPass._id} entryPass={entryPass} />;
+            }
+            return null; // Skip rendering if type doesn't match
+          })}
+        </div>
       </div>
     </div>
   );

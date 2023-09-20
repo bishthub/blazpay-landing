@@ -75,19 +75,19 @@ const Navbar = () => {
                 </li>
                 <li className="text-white hover:text-gray-100">
                   <a
-                    href="/"
+                    href="/#why-us"
                     className="text-white transition duration-300 group"
                   >
-                    Business
+                    Why Us?
                     <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-gradient-to-r from-[#FF3503] to-yellow-500"></span>
                   </a>
                 </li>
                 <li className="text-white ">
                   <a
-                    href="/"
+                    href="/#blogs"
                     className="text-white transition duration-300 group"
                   >
-                    Contact Us
+                    Blogs
                     <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-gradient-to-r from-[#FF3503] to-yellow-500"></span>
                   </a>
                 </li>
