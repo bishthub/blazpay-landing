@@ -4,7 +4,7 @@ const Faq = () => {
   return (
     <div
       className="flex flex-col items-center justify-center w-full min-h-screen gap-3 p-8 bg-cover md:p-20 bg-pattern-2 md:gap-10 md:h-screen "
-      style={{ overflowX: "hidden" }}
+      style={{ overflow: "hidden" }}
     >
       <h1
         data-aos="fade-right"

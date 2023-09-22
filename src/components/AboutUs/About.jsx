@@ -74,6 +74,7 @@ const About = () => {
     <div
       className="flex flex-col justify-center w-full p-8 mt-2 bg-cover md:p-20 bg-pattern-2 min-h-height md:h-80vh "
       // style={{ height: "80vh" }}
+      style={{ overflow: "hidden" }}
     >
       <h1
         data-aos="zoom-in"

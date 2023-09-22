@@ -9,7 +9,7 @@ const Hero = () => {
       <div className="h-full bg-cover md:bg-hero-pattern md:h-80vh py-10">
         <div
           className="flex flex-col justify-between gap-8 px-4 md:gap-0 md:flex-row md:mx-auto lg:max-w-7xl md:flex md:px-8 font-bvmp "
-          style={{ overflowX: "hidden" }}
+          style={{ overflow: "hidden" }}
         >
           <div
             className=" rounded-3xl md:w-[55%] overflow-hidden bg-[#8E8C8C]/25 "

@@ -1,5 +1,8 @@
 import React from "react";
-import BlogImg from "../assets/blog.png";
+import BlogImg1 from "../assets/blog_1.png";
+import BlogImg2 from "../assets/Blog_2.png";
+import BlogImg3 from "../assets/Blog_3.png";
+import BlogImg4 from "../assets/Blog_4.png";
 import ellipse from "../assets/ellipsenew.png";
 
 const Blogs = () => {
@@ -11,21 +14,30 @@ const Blogs = () => {
     "https://medium.com/@blazpay/blazpay-blockchain-integration-e789a1e8eb8c",
   ];
 
+  const BlogImg = [BlogImg1, BlogImg2, BlogImg3, BlogImg4];
   return (
     <div
       id="blogs"
-      className="flex flex-col justify-center w-full p-8 bg-cover md:p-20 bg-feature-back relative md:h-screen"
-      style={{ overflowX: "hidden" }}
+      className="flex flex-col justify-center w-full p-8 bg-cover md:p-20 bg-feature-back relative mid-h-screen md:h-screen"
+      style={{ overflow: "hidden" }}
     >
       <div className="w-full flex flex-col items-center justify-center gap-5">
         <h1 className="w-full font-bold text-5xl mr-auto md:absolute top-2 pl-10">
           Blogs
         </h1>
-        <div className="w-full grid grid-cols-1 md:grid-cols-4 gap-1">
+        <div className="w-full grid grid-cols-1 md:grid-cols-4 gap-2">
           {/* Wrap each image with an anchor tag */}
           {articleUrls.map((url, index) => (
-            <a key={index} href={url} target="_blank" rel="noopener noreferrer">
-              <img className="w-full mx-auto" src={BlogImg} alt="" />
+            <a
+              key={index}
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-aos="fade-down"
+              data-aos-delay="500"
+              data-aos-duration="1000"
+            >
+              <img className="w-full mx-auto" src={BlogImg[index]} alt="" />
             </a>
           ))}
         </div>

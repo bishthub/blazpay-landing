@@ -11,7 +11,7 @@ const Description = () => {
       <div className="mt-2 bg-cover bg-feature-back ">
         <div
           className="justify-between px-4 md:mx-auto lg:max-w-7xl md:flex md:px-8 font-bvmp md:h-screen"
-          style={{ overflowX: "hidden" }}
+          style={{ overflow: "hidden" }}
         >
           <div
             className=" flex-col  md:w-[55%] items-center "

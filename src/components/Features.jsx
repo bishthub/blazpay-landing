@@ -11,7 +11,7 @@ const Features = () => {
     <div className="mt-8 bg-feature-back bg-cover md:h-screen flex items-center justify-center  ">
       <div
         className="  md:mx-auto lg:max-w-7xl md font-bvmp "
-        style={{ overflowX: "hidden" }}
+        style={{ overflow: "hidden" }}
       >
         <div className="p-8 flex flex-col md:flex-row justify-center space-y-4 md:space-x-4 md:space-y-0">
           {/* First Red Card */}

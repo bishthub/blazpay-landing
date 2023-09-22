@@ -11,7 +11,7 @@ const WhyUs = () => {
       <div
         id="why-us"
         className="bg-why-us bg-cover md:h-screen flex items-center justify-center"
-        style={{ zIndex: "9999", overflowX: "hidden" }}
+        style={{ zIndex: "9999", overflow: "hidden" }}
       >
         <div
           className="p-2 flex flex-col max-w-7xl mx-auto md:flex-row justify-center space-y-4 md:space-x-5 md:space-y-0 font-bvmp"
