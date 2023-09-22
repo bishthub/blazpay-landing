@@ -15,6 +15,7 @@ const Roadmap = () => {
       className="relative flex-col justify-center w-full  gap-6 p-20 mt-8 bg-center bg-cover bg-pattern-2 min-h-screen
   
     "
+      style={{ overflowX: "hidden" }}
     >
       <h1
         data-aos="zoom-in"
