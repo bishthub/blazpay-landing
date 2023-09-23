@@ -14,7 +14,12 @@ const Blogs = () => {
     "https://medium.com/@blazpay/blazpay-blockchain-integration-e789a1e8eb8c",
   ];
 
-  const BlogImg = [BlogImg1, BlogImg2, BlogImg3, BlogImg4];
+  const BlogImg = [
+    "https://miro.medium.com/v2/resize:fit:828/format:webp/1*u4J7qhCfssFPsSyVDfgUqQ.jpeg",
+    "https://miro.medium.com/v2/resize:fit:828/format:webp/1*dmIV3teFTjLWy3LiLTbXtQ.jpeg",
+    "https://miro.medium.com/v2/resize:fit:828/format:webp/1*zoiuBnmt4CckChhYRASgjw.jpeg",
+    "https://miro.medium.com/v2/resize:fit:828/format:webp/1*ohdb4dlNLg4SZufP-Yvd-w.png",
+  ];
   return (
     <div
       id="blogs"
@@ -25,19 +30,18 @@ const Blogs = () => {
         <h1 className="w-full font-bold text-5xl mr-auto md:absolute top-2 pl-10">
           Blogs
         </h1>
-        <div className="w-full grid grid-cols-1 md:grid-cols-4 gap-2">
+        <div className="w-full grid grid-cols-1 md:grid-cols-4 gap-2 md:gap-5">
           {/* Wrap each image with an anchor tag */}
           {articleUrls.map((url, index) => (
-            <a
-              key={index}
-              href={url}
-              target="_blank"
-              rel="noopener noreferrer"
-              data-aos="fade-down"
-              data-aos-delay="500"
-              data-aos-duration="1000"
-            >
-              <img className="w-full mx-auto" src={BlogImg[index]} alt="" />
+            <a key={index} href={url} target="_blank" rel="noopener noreferrer">
+              <img
+                className="w-full mx-auto rounded-xl"
+                src={BlogImg[index]}
+                alt=""
+                data-aos="fade-down"
+                data-aos-delay="500"
+                data-aos-duration="1000"
+              />
             </a>
           ))}
         </div>
