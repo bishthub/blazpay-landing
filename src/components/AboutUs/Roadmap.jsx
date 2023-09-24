@@ -7,6 +7,7 @@ import LeftArrowImg from "../../assets/leftarr.png";
 import LineImg from "../../assets/line.png";
 import Ellipse from "../../assets/ellipsenew.png";
 import Rect from "../../assets/rect.png";
+import Navbar from "../Navbar";
 // min-h-screen
 
 const Roadmap = () => {

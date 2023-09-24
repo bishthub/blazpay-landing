@@ -12,7 +12,6 @@ const Contact = () => {
     email: "",
     content: "",
     subject: "",
-    // newsletter: false,
   });
   const navigate = useNavigate();
 
@@ -31,54 +30,33 @@ const Contact = () => {
       const response = await axios.post(
         "http://localhost:3000/api/email/send-email",
         formData
-      ); // Use Axios for the POST request
+      );
 
       if (response.status === 200) {
         // toast.success("Email sent successfully");
         console.log("successfully sent");
         navigate("/");
-        // Reset the form or show a success message
       } else {
         console.error("Email sending failed");
-        // Handle error, show error message, etc.
       }
     } catch (error) {
       console.error("Email sending failed:", error);
     }
   };
   return (
-    <div className="w-full h-full md:h-screen bg-cover flex flex-row justify-center items-center gap-0">
-      <div className="h-full w-full bg-white flex items-center justify-end">
-        <div className="w-3/4 h-3/4 bg-black flex  flex-col justify-center items-center rounded-tr rounded-br">
-          <h1 className="w-3/4 mr-auto m-auto font-extrabold text-5xl">
+    <div
+      className="w-3/4 m-auto md:w-full md:m-0   md:h-[80vh] bg-center bg-cover bg-pattern-2 flex  flex-row justify-center items-center gap-0 mt-5 md:mt-0"
+      style={{ overflow: "hidden" }}
+    >
+      <div className="h-full w-full bg-transparent flex items-center md:justify-end justify-center ">
+        <div className="w-full md:w-3/4 h-full md:h-4/5 bg-transparent md: bg-black flex  flex-col justify-center items-center rounded-tl-lg  rounded-bl-lg p-10  border-2 border-orange-700 gap-12 md:gap-0">
+          <h1 className="w-full md:w-3/4 h-full md:h-3/4  mr-auto m-auto font-extrabold text-5xl ">
             Contact <span className="text-[#FF3503] ">us</span>
           </h1>
           <form
             className="w-3/4  flex flex-col justify-center items-center m-auto gap-3 "
             onSubmit={handleSubmit}
           >
-            {/* <input
-              className="w-full bg-transparent border-b placeholder-white border-white outline-none"
-              type="text"
-              placeholder="Name"
-            />
-            <input
-              className="w-full bg-transparent border-b border-white focus:border-[gray-500] outline-none placeholder-white "
-              type="email"
-              placeholder="Email"
-            />
-            <textarea
-              className="w-full bg-transparent border-b border-white outline-none h-full placeholder-white "
-              placeholder="Message"
-              rows={6}
-            />
-            <div className="  flex flex-row  mr-auto gap-3 ">
-              <input type="checkbox" className="placeholder-white " />
-              <p className="w-full">I would like to receive the newsletter.</p>
-            </div>
-            <button className="bg-orange-700 rounded-lg mr-auto mt-20 px-2">
-              Submit
-            </button> */}
             <input
               className="w-full bg-transparent border-b placeholder-white border-white outline-none"
               type="text"
@@ -126,7 +104,7 @@ const Contact = () => {
               <p className="w-full">I would like to receive the newsletter.</p>
             </div>
             <button
-              className="bg-orange-700 rounded-lg mr-auto mt-20 px-2"
+              className="bg-orange-700 rounded-lg mr-auto mt-10 px-2"
               type="submit"
             >
               Submit
@@ -134,8 +112,9 @@ const Contact = () => {
           </form>
         </div>
       </div>
-      <div className="h-full w-full bg-black flex items-center justify-start ">
-        <div className="w-3/4 h-3/4 flex flex-col bg-white justify-center items-center rounded-lg rounded-lg">
+      {/* w-full md:w-3/4 h-full md:h-3/4 */}
+      <div className="h-full w-full bg-transparent md:flex items-center justify-start hidden  ">
+        <div className="w-3/4 h-4/5 flex flex-col bg-white justify-center items-center rounded-tr-lg  rounded-br-lg border-2 border-orange-700">
           <div className="w-3/4 h-3/4 flex flex-col justify-center items-center ">
             <h1 className="w-full text-black font-bold">
               Have questions or feedback? Feel free to reach out to us using the
