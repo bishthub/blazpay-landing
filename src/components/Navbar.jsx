@@ -74,13 +74,13 @@ const Navbar = () => {
                   </a>
                 </li>
                 <li className="text-white hover:text-gray-100">
-                  <a
-                    href="/#why-us"
+                  <Link
+                    to="/contact-us"
                     className="text-white transition duration-300 group"
                   >
-                    Why Us?
+                    Contact Us
                     <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-gradient-to-r from-[#FF3503] to-yellow-500"></span>
-                  </a>
+                  </Link>
                 </li>
                 <li className="text-white ">
                   <a
