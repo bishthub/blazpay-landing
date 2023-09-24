@@ -1,8 +1,4 @@
 import React from "react";
-import BlogImg1 from "../assets/blog_1.png";
-import BlogImg2 from "../assets/Blog_2.png";
-import BlogImg3 from "../assets/Blog_3.png";
-import BlogImg4 from "../assets/Blog_4.png";
 import ellipse from "../assets/ellipsenew.png";
 
 const Blogs = () => {
@@ -18,7 +14,7 @@ const Blogs = () => {
     "https://miro.medium.com/v2/resize:fit:828/format:webp/1*u4J7qhCfssFPsSyVDfgUqQ.jpeg",
     "https://miro.medium.com/v2/resize:fit:828/format:webp/1*dmIV3teFTjLWy3LiLTbXtQ.jpeg",
     "https://miro.medium.com/v2/resize:fit:828/format:webp/1*zoiuBnmt4CckChhYRASgjw.jpeg",
-    "https://miro.medium.com/v2/resize:fit:828/format:webp/1*ohdb4dlNLg4SZufP-Yvd-w.png",
+    "https://miro.medium.com/v2/resize:fit:828/format:webp/1*YYwuZVTJbvebBa7s3QWbFQ.png",
   ];
   return (
     <div
