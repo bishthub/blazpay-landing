@@ -17,7 +17,7 @@ const ClaimHero = () => {
             <h1 className="w-full m-auto text-2xl font-bold text-center ">
               MINT YOUR ENTRYPASS TO
             </h1>
-            <img className="w-3/4" src={logo} alt="" />
+            <img className="w-3/4 pt-4" src={logo} alt="" />
             <div className="w-full border-b-2 border-white"></div>
             <p className="text-sm">
               orem Ipsum is simply dummy text of the printing and typesetting

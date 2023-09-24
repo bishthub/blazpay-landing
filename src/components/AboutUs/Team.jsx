@@ -33,7 +33,7 @@ const Team = () => {
           />
           <div className="flex flex-col items-center justify-center gap-5">
             <h2>Baldeep Sethi</h2>
-            <h2>CEO</h2>
+            <h2>Co-Founder</h2>
           </div>
         </div>
         <div className="flex items-center justify-center gap-5 md:gap-10 md:flex-col">
@@ -56,7 +56,7 @@ const Team = () => {
 
           <div className="flex flex-col items-center justify-center gap-5">
             <h2>Shubham Bisht</h2>
-            <h2>CTO</h2>
+            <h2>Co-Founder</h2>
           </div>
         </div>
         <div className="flex flex-row items-center justify-center gap-5 md:gap-10 md:flex-col">
@@ -78,7 +78,7 @@ const Team = () => {
           />
           <div className="flex flex-col items-center justify-center gap-5">
             <h2>Rishabh Bhatti</h2>
-            <h2>CFO</h2>
+            <h2>Co-Founder</h2>
           </div>
         </div>
       </div>
