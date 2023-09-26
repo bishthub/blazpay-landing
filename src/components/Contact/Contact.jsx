@@ -45,20 +45,21 @@ const Contact = () => {
   };
   return (
     <div
-      className="w-3/4 m-auto md:w-full md:m-0   md:h-[80vh] bg-center bg-cover bg-pattern-2 flex  flex-row justify-center items-center gap-0 mt-5 md:mt-0"
+      className="w-full m-auto md:w-full md:m-0   md:h-[80vh] min-h-full flex  flex-row justify-center  md:items-center gap-0  md:mt-0 "
       style={{ overflow: "hidden" }}
     >
-      <div className="h-full w-full bg-transparent flex items-center md:justify-end justify-center ">
-        <div className="w-full md:w-3/4 h-full md:h-4/5 bg-transparent md: bg-black flex  flex-col justify-center items-center rounded-tl-lg  rounded-bl-lg p-10  border-2 border-orange-700 gap-12 md:gap-0">
-          <h1 className="w-full md:w-3/4 h-full md:h-3/4  mr-auto m-auto font-extrabold text-5xl ">
+      {/* <Navbar /> */}
+      <div className="flex items-center justify-center w-full h-full bg-transparent md:justify-end ">
+        <div className="flex flex-col items-center justify-center w-full h-full gap-12 p-10 bg-transparent bg-black border-0 border-orange-700 rounded-tl-lg rounded-bl-lg md:border-2 md:w-3/4 md:h-full md: md:gap-0">
+          <h1 className="w-full h-full m-auto mr-auto text-xl font-extrabold md:text-3xl md:w-3/4 md:h-3/4 ">
             Contact <span className="text-[#FF3503] ">us</span>
           </h1>
           <form
-            className="w-3/4  flex flex-col justify-center items-center m-auto gap-3 "
+            className="flex flex-col items-center justify-center w-full gap-5 m-auto md:w-3/4 "
             onSubmit={handleSubmit}
           >
             <input
-              className="w-full bg-transparent border-b placeholder-white border-white outline-none"
+              className="w-full placeholder-white bg-transparent border-b border-white outline-none "
               type="text"
               placeholder="Name"
               name="name"
@@ -85,15 +86,15 @@ const Contact = () => {
               required
             />
             <textarea
-              className="w-full bg-transparent border-b border-white outline-none h-full placeholder-white "
+              className="w-full h-full placeholder-white bg-transparent border-b border-white outline-none "
               placeholder="Content"
-              rows={6}
+              rows={4}
               name="content"
               value={formData.content}
               onChange={handleChange}
               required
             />
-            <div className="  flex flex-row  mr-auto gap-3 ">
+            <div className="flex flex-row gap-3 mr-auto ">
               <input
                 type="checkbox"
                 className="placeholder-white "
@@ -104,7 +105,7 @@ const Contact = () => {
               <p className="w-full">I would like to receive the newsletter.</p>
             </div>
             <button
-              className="bg-orange-700 rounded-lg mr-auto mt-10 px-2"
+              className="px-2 mt-10 mr-auto bg-orange-700 rounded-lg"
               type="submit"
             >
               Submit
@@ -113,24 +114,24 @@ const Contact = () => {
         </div>
       </div>
       {/* w-full md:w-3/4 h-full md:h-3/4 */}
-      <div className="h-full w-full bg-transparent md:flex items-center justify-start hidden  ">
-        <div className="w-3/4 h-4/5 flex flex-col bg-white justify-center items-center rounded-tr-lg  rounded-br-lg border-2 border-orange-700">
-          <div className="w-3/4 h-3/4 flex flex-col justify-center items-center ">
-            <h1 className="w-full text-black font-bold">
+      <div className="items-center justify-start hidden w-full h-full bg-transparent md:flex ">
+        <div className="flex flex-col items-center justify-center w-3/4 h-full bg-white border-2 border-orange-700 rounded-tr-lg rounded-br-lg">
+          <div className="flex flex-col items-center justify-center w-3/4 h-3/4 ">
+            <h1 className="w-full font-bold text-black">
               Have questions or feedback? Feel free to reach out to us using the
               form below. We value your input and will get back to you as soon
               as possible. Your thoughts are important to us!
             </h1>
             <div className="w-full m-auto">
-              <img className="invert m-auto" src={blazpayImg} alt="" />
+              <img className="m-auto invert" src={blazpayImg} alt="" />
             </div>
 
             <div className="flex flex-col justify-center">
-              <div className="flex flex-row gap-2 items-center">
+              <div className="flex flex-row items-center gap-2">
                 <BiSolidPhoneCall style={{ color: "black" }} />
                 <p className="text-black">+91 999999999</p>
               </div>
-              <div className="flex flex-row gap-2 items-center">
+              <div className="flex flex-row items-center gap-2">
                 <GrMail style={{ color: "black" }} />
                 <p className="text-black">blazpay@gmai.com</p>
               </div>

@@ -4,7 +4,7 @@ import Contact from "./Contact";
 
 const ContactMain = () => {
   return (
-    <div>
+    <div className="h-screen bg-center bg-cover bg-pattern-2 ">
       <Navbar />
       <Contact />
     </div>
