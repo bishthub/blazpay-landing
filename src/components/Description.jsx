@@ -8,10 +8,10 @@ import google from "../assets/google.png";
 const Description = () => {
   return (
     <>
-      <div className="mt-2 bg-cover bg-feature-back ">
+      <div className="min-h-screen mt-2 bg-cover bg-feature-back ">
         <div
-          className="justify-between px-4 md:mx-auto lg:max-w-7xl md:flex md:px-8 font-bvmp md:h-screen"
-          style={{ overflow: "hidden" }}
+          className="justify-between px-4 md:mx-auto lg:max-w-7xl md:flex md:px-8 font-bvmp "
+          // style={{ overflow: "hidden" }}
         >
           <div
             className=" flex-col  md:w-[55%] items-center "
@@ -38,7 +38,7 @@ const Description = () => {
                 Revolutionising the Financial Landscape
               </h2>
             </div>
-            <div className="md:absolute top-56 py-4">
+            <div className="py-4 md:absolute top-56">
               <div
                 className="  rounded-2xl  bg-gradient-to-t from-[#110C09] to-[#8E8C8C]/25 px-4  "
                 data-aos="fade-down"
@@ -63,7 +63,7 @@ const Description = () => {
                   </li>
                 </ul>
               </div>
-              <div className="flex gap-5 mx-auto justify-evenly py-4">
+              <div className="flex gap-5 py-4 mx-auto justify-evenly">
                 <a href="">
                   <img src={apple} alt="" className="cursor-pointer" />
                 </a>

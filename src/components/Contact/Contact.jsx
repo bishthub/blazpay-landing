@@ -35,6 +35,12 @@ const Contact = () => {
       if (response.status === 200) {
         // toast.success("Email sent successfully");
         console.log("successfully sent");
+        setFormData({
+          name: "",
+          email: "",
+          content: "",
+          subject: "",
+        });
         navigate("/");
       } else {
         console.error("Email sending failed");

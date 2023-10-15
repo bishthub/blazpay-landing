@@ -7,6 +7,7 @@ import Description from "./Description";
 import WhyUs from "./WhyUs";
 import Footer from "./Footer";
 import Blogs from "./Blogs";
+import Partners from "./Partners";
 
 const Landing = () => {
   return (
@@ -20,6 +21,8 @@ const Landing = () => {
         <Description />
         <Gradient />
         <WhyUs />
+        <Gradient />
+        <Partners />
         <Gradient />
         <Blogs />
 
