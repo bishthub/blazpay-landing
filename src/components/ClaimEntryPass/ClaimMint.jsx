@@ -50,7 +50,7 @@ const connectWallet = async (chain) => {
   }
 };
 
-const ArbCard = ({ entryPass }) => {
+const ArbCard = ({ entryPass, imgSrc }) => {
   const mintTokenArbitrum = async () => {
     if (window.ethereum) {
       try {
@@ -75,21 +75,22 @@ const ArbCard = ({ entryPass }) => {
   };
 
   return (
-    <div className="flex items-center justify-center w-full">
-      <div className="flex flex-col items-center justify-center w-1/2 gap-4 p-5 m-2  bg-gradient-to-r from-[#FF3503] to-yellow-500 rounded-lg">
-        <h1>{entryPass.name}</h1>
+    <div className="w-full flex justify-center items-center">
+      <div className="flex flex-col items-center justify-center w-1/2 gap-4 p-5 m-2 rounded-lg">
+        <img src={imgSrc} alt="omni" />
+        <h1 className="text-xl">{entryPass.name}</h1>
         <button
           onClick={mintTokenArbitrum}
-          className="flex items-center justify-center px-10 py-2 text-black bg-white rounded-lg"
+          className="flex items-center justify-center px-10 py-2 bg-gradient-to-r from-[#FF3503] to-yellow-500 font-bold rounded-lg"
         >
-          Mint Now
+          Get It Now
         </button>
       </div>
     </div>
   );
 };
 
-const OmniCard = ({ entryPass }) => {
+const OmniCard = ({ entryPass, imgSrc }) => {
   const mintTokenOmni = async () => {
     if (window.ethereum) {
       try {
@@ -118,21 +119,22 @@ const OmniCard = ({ entryPass }) => {
   };
 
   return (
-    <div className="w-full">
-      <div className="flex flex-col items-center justify-center w-1/2 gap-4 p-5 m-2 bg-blue-500 rounded-lg">
-        <h1>{entryPass.name}</h1>
+    <div className="w-full flex justify-center items-center">
+      <div className="flex flex-col items-center justify-center w-1/2 gap-4 p-5 m-2 rounded-lg">
+        <img src={imgSrc} alt="omni" />
+        <h1 className="text-xl space-x-4">{entryPass.name}</h1>
         <button
           onClick={mintTokenOmni}
-          className="flex items-center justify-center px-10 py-2 text-black bg-white rounded-lg"
+          className="flex items-center justify-center px-10 py-2 bg-gradient-to-r from-[#FF3503] to-yellow-500 font-bold rounded-lg"
         >
-          Mint Now
+          Mint Arbitrum First
         </button>
       </div>
     </div>
   );
 };
 
-const Omni1Card = ({ entryPass }) => {
+const Omni1Card = ({ entryPass, imgSrc }) => {
   const mintTokenOmni = async () => {
     if (window.ethereum) {
       try {
@@ -160,14 +162,15 @@ const Omni1Card = ({ entryPass }) => {
   };
 
   return (
-    <div className="w-full">
-      <div className="flex flex-col items-center justify-center w-1/2 gap-4 p-5 m-2 bg-blue-500 rounded-lg">
-        <h1>{entryPass.name}</h1>
+    <div className="w-full flex justify-center items-center">
+      <div className="flex flex-col items-center justify-center w-1/2 gap-4 p-5 m-2 rounded-lg">
+        <img src={imgSrc} alt="entry pass" />
+        <h1 className="text-xl">{entryPass.name}</h1>
         <button
           onClick={mintTokenOmni}
-          className="flex items-center justify-center px-10 py-2 text-black bg-white rounded-lg"
+          className="flex items-center justify-center px-10 py-2  rounded-lg bg-gradient-to-r from-[#FF3503] to-yellow-500 font-bold"
         >
-          Mint Now
+          Get It Niw For $1
         </button>
       </div>
     </div>
@@ -223,11 +226,29 @@ const ClaimMint = () => {
               return <MainNetCard key={entryPass._id} entryPass={entryPass} />;
             } else if (!select && entryPass.type === "testnet") {
               if (entryPass.chain === "Omni") {
-                return <OmniCard key={entryPass._id} entryPass={entryPass} />;
+                return (
+                  <OmniCard
+                    key={entryPass._id}
+                    entryPass={entryPass}
+                    imgSrc="/omni.png"
+                  />
+                );
               } else if (entryPass.chain === "Arbitrum") {
-                return <ArbCard key={entryPass._id} entryPass={entryPass} />;
+                return (
+                  <ArbCard
+                    key={entryPass._id}
+                    entryPass={entryPass}
+                    imgSrc="/arbitrum.png"
+                  />
+                );
               } else if (entryPass.chain === "Omni1") {
-                return <Omni1Card key={entryPass._id} entryPass={entryPass} />;
+                return (
+                  <Omni1Card
+                    key={entryPass._id}
+                    entryPass={entryPass}
+                    imgSrc="/entry.png"
+                  />
+                );
               }
             }
             console.log("ENTRY PASS DATA ", entryPassData);
