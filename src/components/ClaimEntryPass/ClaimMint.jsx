@@ -194,85 +194,6 @@ const ClaimMint = () => {
     setSelect(!select);
   };
 
-  // return (
-  //   <div className="w-full px-3 py-6 min-h-screen">
-  //     <div className="flex flex-col items-center w-full h-full p-2 bg-gray-800 border-2 border-orange-700 rounded-lg">
-  //       <div className="flex flex-row items-center w-full gap-5">
-  //         <button
-  //           onClick={HandleSelect}
-  //           className={`rounded-2xl px-5 text-lg ${
-  //             !select
-  //               ? "bg-gradient-to-r from-[#FF3503] to-yellow-500"
-  //               : "bg-white text-black"
-  //           }`}
-  //         >
-  //           TestNet
-  //         </button>
-  //         <button
-  //           onClick={HandleSelect}
-  //           className={`rounded-2xl px-5 text-lg ${
-  //             select
-  //               ? "bg-gradient-to-r from-[#FF3503] to-yellow-500"
-  //               : "bg-white text-black"
-  //           }`}
-  //         >
-  //           MainNet
-  //         </button>
-  //       </div>
-  //       <div className="grid justify-center w-full grid-cols-1 m-auto md:grid-cols-2">
-  //         {entryPassData.map((entryPass) => {
-  //           // Conditionally render cards based on the type and chain
-  //           if (select && entryPass.type === "mainnet") {
-  //             return <MainNetCard key={entryPass._id} entryPass={entryPass} />;
-  //           } else if (!select && entryPass.type === "testnet") {
-  //             if (entryPass.chain === "Omni") {
-  //               return (
-  //                 <OmniCard
-  //                   key={entryPass._id}
-  //                   entryPass={entryPass}
-  //                   imgSrc="/omni.png"
-  //                 />
-  //               );
-  //             } else if (entryPass.chain === "Arbitrum") {
-  //               return (
-  //                 <ArbCard
-  //                   key={entryPass._id}
-  //                   entryPass={entryPass}
-  //                   imgSrc="/arbitrum.png"
-  //                 />
-  //               );
-  //             } else if (entryPass.chain === "Omni1") {
-  //               return (
-  //                 <Omni1Card
-  //                   key={entryPass._id}
-  //                   entryPass={entryPass}
-  //                   imgSrc="/entry.png"
-  //                 />
-  //               );
-  //             }
-  //           }
-  //           console.log("ENTRY PASS DATA ", entryPassData);
-  //           return null; // Skip rendering if type doesn't match
-  //         })}
-
-  //         <div className="w-3/4 h-full bg-white p-5 flex  items-center flex-col rounded-3xl gap-5 md:gap-10">
-  //           <h1 className="font-bold text-xl md:text-3xl text-black w-full md:mr-auto">
-  //             Note:
-  //           </h1>
-
-  //           <p className="text-black font-semibold">
-  //             1. To Get Entry pass on Omni You need to first Minth the Arbitrum
-  //             Pass and then You will be able to mint on Omni
-  //           </p>
-  //           <p className="text-black font-semibold">
-  //             2. With Easy Access Card We have eliminated all the hurdles which
-  //             directly Gives you Entry pass for Omni At Just 1USD
-  //           </p>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   </div>
-
   return (
     <div className="w-full px-3 py-6 min-h-screen">
       <div className="flex flex-col items-center w-full h-full p-2 bg-black border-2 border-orange-700 rounded-lg">
@@ -299,6 +220,34 @@ const ClaimMint = () => {
           </button>
         </div>
         <div className="grid w-full grid-cols-1 gap-5 md:grid-cols-3">
+          {!select && (
+            <>
+              {entryPassData.map((entryPass) => {
+                if (entryPass.chain === "Arbitrum") {
+                  return (
+                    <ArbCard
+                      key={entryPass._id}
+                      entryPass={entryPass}
+                      imgSrc="/arbitrum.png"
+                    />
+                  );
+                }
+              })}
+            </>
+          )}
+          {!select && (
+            <div
+              className="flex-1 flex justify-center items-center "
+              style={{ flexBasis: "20%" }}
+            >
+              {" "}
+              <h1 className="" style={{ fontWeight: "900", fontSize: "5rem" }}>
+                {" "}
+                +
+              </h1>
+            </div>
+          )}
+
           {entryPassData.map((entryPass) => {
             // Conditionally render cards based on the type and chain
             if (select && entryPass.type === "mainnet") {
@@ -320,56 +269,9 @@ const ClaimMint = () => {
                 );
               }
             }
-            // else if (entryPass.chain === "Arbitrum") {
-            //     return (
-            //       <ArbCard
-            //         key={entryPass._id}
-            //         entryPass={entryPass}
-            //         imgSrc="/arbitrum.png"
-            //       />
-            //     );
-            //   } else if (entryPass.chain === "Omni1") {
-            //     return (
-            //       <Omni1Card
-            //         key={entryPass._id}
-            //         entryPass={entryPass}
-            //         imgSrc="/entry.png"
-            //       />
-            //     );
-            //   }
-            // }
-            // return null; // Skip rendering if type doesn't match
           })}
 
-          {!select && (
-            <div
-              className="flex-1 flex justify-center items-center "
-              style={{ flexBasis: "20%" }}
-            >
-              {" "}
-              <h1 className="" style={{ fontWeight: "900", fontSize: "5rem" }}>
-                {" "}
-                +
-              </h1>
-            </div>
-          )}
-
           {/* {!select && ( */}
-          {!select && (
-            <>
-              {entryPassData.map((entryPass) => {
-                if (entryPass.chain === "Arbitrum") {
-                  return (
-                    <ArbCard
-                      key={entryPass._id}
-                      entryPass={entryPass}
-                      imgSrc="/arbitrum.png"
-                    />
-                  );
-                }
-              })}
-            </>
-          )}
         </div>
 
         {!select && (
