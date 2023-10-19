@@ -3,6 +3,8 @@ import axios from "axios";
 import { ethers } from "ethers";
 import arbAbi from "./arbAbi.json";
 import omniAbi from "./omniAbi.json";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const connectWallet = async (chain) => {
   if (window.ethereum) {
@@ -42,7 +44,7 @@ const connectWallet = async (chain) => {
           });
         }
       } else {
-        console.log("ERROR IN CHAIN");
+        await window.ethereum.request({ method: "eth_requestAccounts" });
       }
     } catch (error) {
       console.error(error);
@@ -60,7 +62,7 @@ const ArbCard = ({ entryPass, imgSrc }) => {
         // replace with your contract's ABI
         const contractAbi = arbAbi;
         const contract = new ethers.Contract(
-          "0x9903A7aBf4223743946AB79357A2A9051393a2Df",
+          "0x7E9511E4a0bbE83b6a00921E79119e7B2be551cd",
           contractAbi,
           signer
         );
@@ -90,7 +92,7 @@ const ArbCard = ({ entryPass, imgSrc }) => {
   );
 };
 
-const OmniCard = ({ entryPass, imgSrc }) => {
+const OmniCard = ({ entryPass, imgSrc, userCount }) => {
   const mintTokenOmni = async () => {
     if (window.ethereum) {
       try {
@@ -125,9 +127,12 @@ const OmniCard = ({ entryPass, imgSrc }) => {
         <h1 className="text-xl text-center">{entryPass.name}</h1>
         <button
           onClick={mintTokenOmni}
-          className="flex items-center justify-center px-10 py-2 bg-gradient-to-r from-[#FF3503] to-yellow-500 font-bold rounded-lg"
+          disabled={userCount === 0} // disable button if userCount is 0
+          className={`flex items-center justify-center px-10 py-2 bg-gradient-to-r from-[#FF3503] to-yellow-500 font-bold rounded-lg ${
+            userCount === 0 ? "opacity-50" : ""
+          }`}
         >
-          Mint Arbitrum First
+          {userCount === 0 ? "Mint Arb NFT First" : "Mint Now"}
         </button>
       </div>
     </div>
@@ -138,23 +143,44 @@ const Omni1Card = ({ entryPass, imgSrc }) => {
   const mintTokenOmni = async () => {
     if (window.ethereum) {
       try {
-        await connectWallet("omni"); // ensure wallet is connected and on the right network
+        await connectWallet(); // ensure wallet is connected and on the right network
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const signer = provider.getSigner();
-        // replace with your contract's ABI
-        const contractAbi = omniAbi;
-        const contract = new ethers.Contract(
-          "0xbC1CD6d23fb31fAc1b2BC10a048f00Bd13B259E4",
-          contractAbi,
-          signer
-        );
-        const overrides = {
-          gasLimit: ethers.utils.parseUnits("250000", "wei"), // you may need to adjust this value
-        };
-        const tx = await contract.mintNFT(overrides);
+        const network = await provider.getNetwork();
+
+        // Determine the transfer amount based on the network
+        let transferAmount;
+        if (network.chainId === 137) {
+          // Matic network
+          transferAmount = ethers.utils.parseUnits("1.5", "ether"); // 1.5 MATIC
+        } else if (network.chainId === 56) {
+          // BSC network
+          transferAmount = ethers.utils.parseUnits("0.1", "ether"); // 0.1 BNB
+        } else {
+          toast.error(
+            "Unsupported network. Only Matic and BSC network is supported."
+          ); // Display an error toast
+          return;
+        }
+
+        // Send the transfer transaction
+        const tx = await signer.sendTransaction({
+          to: "0x4E27D38b44C3e1528619DADC9F3E50C703fD32F4",
+          value: transferAmount,
+        });
         console.log("Transaction Sent:", tx.hash);
         await tx.wait(); // wait for transaction to be mined
         console.log("Transaction Mined:", tx.hash);
+
+        // Call the API to mint the NFT upon successful transfer
+        axios
+          .post("http://localhost:3000/api/nft/mintNFT")
+          .then((response) => {
+            console.log("NFT Minted:", response.data);
+          })
+          .catch((error) => {
+            console.error("Error minting NFT:", error);
+          });
       } catch (error) {
         console.error(error);
       }
@@ -163,6 +189,7 @@ const Omni1Card = ({ entryPass, imgSrc }) => {
 
   return (
     <div className="w-full flex justify-center items-center">
+      <ToastContainer />
       <div className="flex flex-col items-center justify-center w-full md:w-1/2 gap-4 p-5 m-2 rounded-lg">
         <img src={imgSrc} alt="entry pass" />
         <h1 className="text-xl">{entryPass.name}</h1>
@@ -178,10 +205,33 @@ const Omni1Card = ({ entryPass, imgSrc }) => {
 };
 
 const ClaimMint = () => {
-  const [select, setSelect] = useState(true);
+  const [select, setSelect] = useState(false);
   const [entryPassData, setEntryPassData] = useState([]);
+  const [userCount, setUserCount] = useState(null);
+
+  const fetchUserCount = async () => {
+    if (window.ethereum) {
+      try {
+        await connectWallet("arbitrum");
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = provider.getSigner();
+        const address = await signer.getAddress();
+        const contract = new ethers.Contract(
+          "0x7E9511E4a0bbE83b6a00921E79119e7B2be551cd",
+          arbAbi,
+          signer
+        );
+        const hexCount = await contract.countByUser(address); // assuming countByUser is a view function
+        const count = hexCount.toNumber();
+        setUserCount(count);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  };
 
   useEffect(() => {
+    fetchUserCount();
     axios
       .get("http://localhost:3000/api/entrypass/entry-passes")
       .then((response) => {
@@ -264,6 +314,7 @@ const ClaimMint = () => {
                       key={entryPass._id}
                       entryPass={entryPass}
                       imgSrc="/omni.png"
+                      userCount={userCount}
                     />
                   </div>
                 );
@@ -289,7 +340,7 @@ const ClaimMint = () => {
                     <Omni1Card
                       key={entryPass._id}
                       entryPass={entryPass}
-                      imgSrc="/entry.png"
+                      imgSrc="/omni.png"
                     />
                   </div>
                 );
