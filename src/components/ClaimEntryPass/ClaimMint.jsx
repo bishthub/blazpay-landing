@@ -174,7 +174,7 @@ const Omni1Card = ({ entryPass, imgSrc }) => {
 
         // Call the API to mint the NFT upon successful transfer
         axios
-          .post('http://34.93.103.113:3000/api/nft/mintNFT')
+          .post('https://api.shubhambisht.com/api/nft/mintNFT')
           .then((response) => {
             console.log('NFT Minted:', response.data);
           })
@@ -233,7 +233,7 @@ const ClaimMint = () => {
   useEffect(() => {
     fetchUserCount();
     axios
-      .get('http://34.93.103.113:3000/api/entrypass/entry-passes')
+      .get('https://api.shubhambisht.com/api/entrypass/entry-passes')
       .then((response) => {
         setEntryPassData(response.data);
         console.log('response', response.data);
