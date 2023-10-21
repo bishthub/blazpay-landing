@@ -28,7 +28,7 @@ const Contact = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/email/send-email",
+        "https://api.shubhambisht.com/api/email/send-email",
         formData
       );
 
