@@ -3,17 +3,16 @@ import blazpayImg from "../../assets/blazpay.png";
 import { BiSolidPhoneCall } from "react-icons/bi";
 import { GrMail } from "react-icons/gr";
 import axios from "axios";
-// import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 
 const Contact = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     content: "",
     subject: "",
   });
-  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,6 +24,7 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true); // set loading to true at the start of form submission
 
     try {
       const response = await axios.post(
@@ -33,7 +33,7 @@ const Contact = () => {
       );
 
       if (response.status === 200) {
-        // toast.success("Email sent successfully");
+        toast.success("Email sent successfully");
         console.log("successfully sent");
         setFormData({
           name: "",
@@ -41,19 +41,23 @@ const Contact = () => {
           content: "",
           subject: "",
         });
-        navigate("/");
       } else {
+        toast.error("Email sending failed"); // Display error toast on failure
         console.error("Email sending failed");
       }
     } catch (error) {
+      toast.error("Email sending failed"); // Display error toast on failure
       console.error("Email sending failed:", error);
     }
+
+    setIsLoading(false); // set loading to false at the end of form submission
   };
   return (
     <div
       className="w-full m-auto md:w-full md:m-0   md:h-[80vh] min-h-full flex  flex-row justify-center  md:items-center gap-0  md:mt-0 "
       style={{ overflow: "hidden" }}
     >
+      <ToastContainer />
       {/* <Navbar /> */}
       <div className="flex items-center justify-center w-full h-full bg-transparent md:justify-end ">
         <div className="flex flex-col items-center justify-center w-full h-full gap-12 p-10 bg-transparent bg-black border-0 border-orange-700 rounded-tl-lg rounded-bl-lg md:border-2 md:w-3/4 md:h-full md: md:gap-0">
@@ -113,8 +117,9 @@ const Contact = () => {
             <button
               className="px-2 mt-10 mr-auto bg-orange-700 rounded-lg"
               type="submit"
+              disabled={isLoading} // disable button during form submission
             >
-              Submit
+              {isLoading ? "Loading..." : "Submit"}
             </button>
           </form>
         </div>
@@ -139,7 +144,7 @@ const Contact = () => {
               </div>
               <div className="flex flex-row items-center gap-2">
                 <GrMail style={{ color: "black" }} />
-                <p className="text-black">blazpay@gmai.com</p>
+                <p className="text-black">contact@blazpay.com</p>
               </div>
             </div>
           </div>
