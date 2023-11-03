@@ -1,16 +1,16 @@
-import React from "react";
-import Navbar from "../Navbar";
-import About from "./About";
-import Roadmap from "./Roadmap";
-import Team from "./Team";
-import TokeNomics from "./TokeNomics";
-import Footer from "../Footer";
-import Gradient from "../../utilities/Gradient";
-import Faq from "./Faq";
+import React from 'react';
+import Navbar from '../Navbar';
+import About from './About';
+import Roadmap from './Roadmap';
+import Team from './Team';
+import TokeNomics from './TokeNomics';
+import Footer from '../Footer';
+import Gradient from '../../utilities/Gradient';
+import Faq from './Faq';
 
 const AboutUs = () => {
   return (
-    <div className="w-full font-bvmp">
+    <div className='w-full font-bvmp'>
       <Navbar />
       <About />
       <Gradient />
@@ -19,7 +19,7 @@ const AboutUs = () => {
       <Team />
       <Gradient />
       <TokeNomics />
-      <Faq />
+      {/* <Faq /> */}
       <Footer />
     </div>
   );
