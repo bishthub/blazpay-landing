@@ -93,8 +93,10 @@ const ArbCard = ({ entryPass, imgSrc }) => {
         const tx = await contract.increment();
         console.log('Transaction Sent:', tx.hash);
         await tx.wait(); // wait for transaction to be mined
-        console.log('Transaction Mined:', tx.hash);
-        toast.success('Mint Successful, now please mint Omni Entry Pass');
+        toast.success('Mint Successful, now please mint Omni Entry Pass', {
+          onClose: () => window.location.reload(),
+        });
+        console.log('Transaction Mined: Omni', tx.hash);
       } catch (error) {
         console.error(error);
       }
@@ -125,7 +127,7 @@ const OmniCard = ({ entryPass, imgSrc, userCount }) => {
     const fetchUserBalance = async () => {
       if (window.ethereum) {
         try {
-          await connectWallet('omni');
+          await connectWallet(userCount ? 'omni' : 'arbitrum');
           const provider = new ethers.providers.Web3Provider(window.ethereum);
           const signer = provider.getSigner();
           const address = await signer.getAddress();
@@ -165,9 +167,9 @@ const OmniCard = ({ entryPass, imgSrc, userCount }) => {
         console.log('Transaction Sent:', tx.hash);
         await tx.wait(); // wait for transaction to be mined
         console.log('Transaction Mined:', tx.hash);
-        toast.success(
-          'Mint Successful now you have access to our Omni Entry Pass.'
-        );
+        toast.success('Mint Successful, welcome to blazpay world.', {
+          onClose: () => window.location.reload(),
+        });
       } catch (error) {
         console.error(error);
       }
@@ -176,6 +178,7 @@ const OmniCard = ({ entryPass, imgSrc, userCount }) => {
 
   return (
     <div className='w-full flex justify-center items-center'>
+      <ToastContainer />
       <div className='flex flex-col items-center justify-center w-full gap-4 p-5 m-2 rounded-lg'>
         <img src={imgSrc} alt='omni' />
         <h1 className='text-xl text-center'>{entryPass.name}</h1>
@@ -279,17 +282,12 @@ const ClaimMint = () => {
         const signer = provider.getSigner();
         const address = await signer.getAddress();
         const contract = new ethers.Contract(
-          '0x7E9511E4a0bbE83b6a00921E79119e7B2be551cd',
+          '0x2e84547878ced3b28c6060ec5b7afa0ec49892cc',
           arbAbi,
           signer
         );
         const hexCount = await contract.countByUser(address); // assuming countByUser is a view function
-        console.log('HEXCOUNT', hexCount);
         const newCount = hexCount.toString();
-        console.log(
-          '🚀 ~ file: ClaimMint.jsx:289 ~ fetchUserCount ~ newC̥ount:',
-          newCount
-        );
         const count = hexCount.toNumber();
         console.log('count', count);
         setUserCount(newCount);
@@ -384,7 +382,7 @@ const ClaimMint = () => {
                       key={entryPass._id}
                       entryPass={entryPass}
                       imgSrc='/omni.png'
-                      userBalance={userCount}
+                      userCount={userCount}
                     />
                   </div>
                 );
