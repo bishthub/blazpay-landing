@@ -3,6 +3,7 @@ import axios from 'axios';
 import { ethers } from 'ethers';
 import arbAbi from './arbAbi.json';
 import omniAbi from './omniAbi.json';
+import shardeumAbi from './shardeum.json';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -13,32 +14,48 @@ const connectWallet = async (chain) => {
       await window.ethereum.request({ method: 'eth_requestAccounts' });
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const network = await provider.getNetwork();
-      if (chain === 'omni') {
-        if (network.chainId !== 165) {
+      // if (chain === 'omni') {
+      //   if (network.chainId !== 165) {
+      //     await window.ethereum.request({
+      //       method: 'wallet_addEthereumChain',
+      //       params: [
+      //         {
+      //           chainId: '0xA5',
+      //           chainName: 'Omni Testnet',
+      //           nativeCurrency: { name: 'OMNI', symbol: 'OMNI', decimals: 18 },
+      //           rpcUrls: ['https://testnet.omni.network'], // replace with the actual RPC
+      //           blockExplorerUrls: ['https://testnet.explorer.omni.network'], // replace with the actual block explorer
+      //         },
+      //       ],
+      //     });
+      //   }
+      // } else if (chain === 'arbitrum') {
+      //   if (network.chainId !== 421613) {
+      //     await window.ethereum.request({
+      //       method: 'wallet_addEthereumChain',
+      //       params: [
+      //         {
+      //           chainId: '0x66EED',
+      //           chainName: 'Arbitrum Goerli',
+      //           nativeCurrency: { name: 'ETH', symbol: 'ETH', decimals: 18 },
+      //           rpcUrls: ['https://goerli-rollup.arbitrum.io/rpc'], // replace with the actual RPC
+      //           blockExplorerUrls: ['https://goerli.arbiscan.io/'], // replace with the actual block explorer
+      //         },
+      //       ],
+      //     });
+      //   }
+      // } else
+      if (chain === 'shardeum') {
+        if (network.chainId !== 8081) {
           await window.ethereum.request({
             method: 'wallet_addEthereumChain',
             params: [
               {
-                chainId: '0xA5',
-                chainName: 'Omni Testnet',
-                nativeCurrency: { name: 'OMNI', symbol: 'OMNI', decimals: 18 },
-                rpcUrls: ['https://testnet.omni.network'], // replace with the actual RPC
-                blockExplorerUrls: ['https://testnet.explorer.omni.network'], // replace with the actual block explorer
-              },
-            ],
-          });
-        }
-      } else if (chain === 'arbitrum') {
-        if (network.chainId !== 421613) {
-          await window.ethereum.request({
-            method: 'wallet_addEthereumChain',
-            params: [
-              {
-                chainId: '0x66EED',
-                chainName: 'Arbitrum Goerli',
-                nativeCurrency: { name: 'ETH', symbol: 'ETH', decimals: 18 },
-                rpcUrls: ['https://goerli-rollup.arbitrum.io/rpc'], // replace with the actual RPC
-                blockExplorerUrls: ['https://goerli.arbiscan.io/'], // replace with the actual block explorer
+                chainId: '0x1f91',
+                chainName: 'Shardeum Dapp Sphinx 1.X',
+                nativeCurrency: { name: 'SHM', symbol: 'SHM', decimals: 18 },
+                rpcUrls: ['https://dapps.shardeum.org'], // replace with the actual RPC
+                blockExplorerUrls: ['https://explorer-dapps.shardeum.org/'], // replace with the actual block explorer
               },
             ],
           });
@@ -52,23 +69,95 @@ const connectWallet = async (chain) => {
   }
 };
 
-const ArbCard = ({ entryPass, imgSrc }) => {
+// const ArbCard = ({ entryPass, imgSrc }) => {
+//   const [userBalance, setUserBalance] = useState(null);
+//   const [loading, setLoading] = useState(false);
+//   useEffect(() => {
+//     const fetchUserBalance = async () => {
+//       if (window.ethereum) {
+//         try {
+//           await connectWallet('arbitrum');
+//           const provider = new ethers.providers.Web3Provider(window.ethereum);
+//           const signer = provider.getSigner();
+//           const address = await signer.getAddress();
+//           const contract = new ethers.Contract(
+//             '0x2e84547878ced3b28c6060ec5b7afa0ec49892cc',
+//             arbAbi,
+//             signer
+//           );
+//           const balance = await contract.countByUser(address);
+//           setUserBalance(balance.toString());
+//         } catch (error) {
+//           console.error(error);
+//         }
+//       }
+//     };
+//     fetchUserBalance();
+//   }, []);
+//   const mintTokenArbitrum = async () => {
+//     if (window.ethereum) {
+//       try {
+//         await connectWallet('arbitrum'); // ensure wallet is connected and on the right network
+//         const provider = new ethers.providers.Web3Provider(window.ethereum);
+//         const signer = provider.getSigner();
+//         // replace with your contract's ABI
+//         const contractAbi = arbAbi;
+//         const contract = new ethers.Contract(
+//           '0x2e84547878ced3b28c6060ec5b7afa0ec49892cc',
+//           contractAbi,
+//           signer
+//         );
+//         const tx = await contract.increment();
+//         console.log('Transaction Sent:', tx.hash);
+//         await tx.wait(); // wait for transaction to be mined
+//         toast.success('Mint Successful, now please mint Omni Entry Pass', {
+//           onClose: () => window.location.reload(),
+//         });
+//         console.log('Transaction Mined: Omni', tx.hash);
+//       } catch (error) {
+//         console.error(error);
+//       }
+//     }
+//   };
+
+//   return (
+//     <div className='w-full flex justify-center items-center'>
+//       <div className=' flex flex-col items-center justify-center gap-4 p-5 m-2 rounded-lg'>
+//         <img className='' src={imgSrc} alt='omni' />
+//         <h1 className='text-xl text-center'>{entryPass.name}</h1>
+//         <h2>You Own {userBalance}</h2>
+//         <button
+//           onClick={mintTokenArbitrum}
+//           className='flex items-center justify-center px-10 py-2 bg-gradient-to-r from-[#FF3503] to-yellow-500 font-bold rounded-lg'
+//         >
+//           Get It Now
+//         </button>
+//       </div>
+//     </div>
+//   );
+// };
+
+const ShardCard = ({ entryPass, imgSrc }) => {
   const [userBalance, setUserBalance] = useState(null);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     const fetchUserBalance = async () => {
       if (window.ethereum) {
         try {
-          await connectWallet('arbitrum');
+          await connectWallet('shardeum');
           const provider = new ethers.providers.Web3Provider(window.ethereum);
           const signer = provider.getSigner();
           const address = await signer.getAddress();
           const contract = new ethers.Contract(
-            '0x2e84547878ced3b28c6060ec5b7afa0ec49892cc',
-            arbAbi,
+            '0x7ea13d779369e3b0b5F78cB050aD97DE6cA9CfBD',
+            shardeumAbi,
             signer
           );
-          const balance = await contract.countByUser(address);
+          const balance = await contract.balanceOf(address);
+          console.log(
+            '🚀 ~ file: ClaimMint.jsx:157 ~ fetchUserBalance ~ balḁnce:',
+            balance
+          );
           setUserBalance(balance.toString());
         } catch (error) {
           console.error(error);
@@ -77,26 +166,30 @@ const ArbCard = ({ entryPass, imgSrc }) => {
     };
     fetchUserBalance();
   }, []);
-  const mintTokenArbitrum = async () => {
+  const mintTokenShardeum = async () => {
     if (window.ethereum) {
       try {
-        await connectWallet('arbitrum'); // ensure wallet is connected and on the right network
+        await connectWallet('shardeum'); // ensure wallet is connected and on the right network
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const signer = provider.getSigner();
-        // replace with your contract's ABI
-        const contractAbi = arbAbi;
+        const userAddress = await signer.getAddress();
         const contract = new ethers.Contract(
-          '0x2e84547878ced3b28c6060ec5b7afa0ec49892cc',
-          contractAbi,
+          '0x7ea13d779369e3b0b5F78cB050aD97DE6cA9CfBD',
+          shardeumAbi,
           signer
         );
-        const tx = await contract.increment();
+        const mintPrice = ethers.utils.parseEther('0.5'); // Replace '0.5' with the actual mint price
+        const overrides = {
+          gasLimit: ethers.utils.hexlify(250000), // Adjust gas limit as needed
+          value: mintPrice, // ETH amount for minting
+        };
+        const tx = await contract.safeMint(userAddress, overrides);
         console.log('Transaction Sent:', tx.hash);
         await tx.wait(); // wait for transaction to be mined
-        toast.success('Mint Successful, now please mint Omni Entry Pass', {
+        toast.success('Mint Successful, Welcome to Blazpay world', {
           onClose: () => window.location.reload(),
         });
-        console.log('Transaction Mined: Omni', tx.hash);
+        console.log('Transaction Mined: Shardeum', tx.hash);
       } catch (error) {
         console.error(error);
       }
@@ -106,11 +199,11 @@ const ArbCard = ({ entryPass, imgSrc }) => {
   return (
     <div className='w-full flex justify-center items-center'>
       <div className=' flex flex-col items-center justify-center gap-4 p-5 m-2 rounded-lg'>
-        <img className='' src={imgSrc} alt='omni' />
+        <img className='' src={imgSrc} alt='shardeum' />
         <h1 className='text-xl text-center'>{entryPass.name}</h1>
         <h2>You Own {userBalance}</h2>
         <button
-          onClick={mintTokenArbitrum}
+          onClick={mintTokenShardeum}
           className='flex items-center justify-center px-10 py-2 bg-gradient-to-r from-[#FF3503] to-yellow-500 font-bold rounded-lg'
         >
           Get It Now
@@ -120,82 +213,82 @@ const ArbCard = ({ entryPass, imgSrc }) => {
   );
 };
 
-const OmniCard = ({ entryPass, imgSrc, userCount }) => {
-  console.log('USER COUNT', userCount);
-  const [userBalance, setUserBalance] = useState(null);
-  useEffect(() => {
-    const fetchUserBalance = async () => {
-      if (window.ethereum) {
-        try {
-          await connectWallet(userCount ? 'omni' : 'arbitrum');
-          const provider = new ethers.providers.Web3Provider(window.ethereum);
-          const signer = provider.getSigner();
-          const address = await signer.getAddress();
-          const contract = new ethers.Contract(
-            '0x2E84547878CeD3B28C6060ec5b7afA0ec49892CC',
-            omniAbi,
-            signer
-          );
-          const balance = await contract.balanceOf(address);
-          setUserBalance(balance.toString());
-        } catch (error) {
-          console.error(error);
-        }
-      }
-    };
-    fetchUserBalance();
-  }, []);
+// const OmniCard = ({ entryPass, imgSrc, userCount }) => {
+//   console.log('USER COUNT', userCount);
+//   const [userBalance, setUserBalance] = useState(null);
+//   useEffect(() => {
+//     const fetchUserBalance = async () => {
+//       if (window.ethereum) {
+//         try {
+//           await connectWallet(userCount ? 'omni' : 'arbitrum');
+//           const provider = new ethers.providers.Web3Provider(window.ethereum);
+//           const signer = provider.getSigner();
+//           const address = await signer.getAddress();
+//           const contract = new ethers.Contract(
+//             '0x2E84547878CeD3B28C6060ec5b7afA0ec49892CC',
+//             omniAbi,
+//             signer
+//           );
+//           const balance = await contract.balanceOf(address);
+//           setUserBalance(balance.toString());
+//         } catch (error) {
+//           console.error(error);
+//         }
+//       }
+//     };
+//     fetchUserBalance();
+//   }, []);
 
-  const mintTokenOmni = async () => {
-    if (window.ethereum) {
-      try {
-        await connectWallet('omni'); // ensure wallet is connected and on the right network
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
-        const signer = provider.getSigner();
-        // replace with your contract's ABI
-        const contractAbi = omniAbi;
-        const contract = new ethers.Contract(
-          '0x2E84547878CeD3B28C6060ec5b7afA0ec49892CC',
-          contractAbi,
-          signer
-        );
-        const overrides = {
-          gasLimit: ethers.utils.parseUnits('250000', 'wei'), // you may need to adjust this value
-          value: ethers.utils.parseEther('1'),
-        };
-        const tx = await contract.mintNFT(overrides);
-        console.log('Transaction Sent:', tx.hash);
-        await tx.wait(); // wait for transaction to be mined
-        console.log('Transaction Mined:', tx.hash);
-        toast.success('Mint Successful, welcome to blazpay world.', {
-          onClose: () => window.location.reload(),
-        });
-      } catch (error) {
-        console.error(error);
-      }
-    }
-  };
+//   const mintTokenOmni = async () => {
+//     if (window.ethereum) {
+//       try {
+//         await connectWallet('omni'); // ensure wallet is connected and on the right network
+//         const provider = new ethers.providers.Web3Provider(window.ethereum);
+//         const signer = provider.getSigner();
+//         // replace with your contract's ABI
+//         const contractAbi = omniAbi;
+//         const contract = new ethers.Contract(
+//           '0x2E84547878CeD3B28C6060ec5b7afA0ec49892CC',
+//           contractAbi,
+//           signer
+//         );
+//         const overrides = {
+//           gasLimit: ethers.utils.parseUnits('250000', 'wei'), // you may need to adjust this value
+//           value: ethers.utils.parseEther('1'),
+//         };
+//         const tx = await contract.mintNFT(overrides);
+//         console.log('Transaction Sent:', tx.hash);
+//         await tx.wait(); // wait for transaction to be mined
+//         console.log('Transaction Mined:', tx.hash);
+//         toast.success('Mint Successful, welcome to blazpay world.', {
+//           onClose: () => window.location.reload(),
+//         });
+//       } catch (error) {
+//         console.error(error);
+//       }
+//     }
+//   };
 
-  return (
-    <div className='w-full flex justify-center items-center'>
-      <ToastContainer />
-      <div className='flex flex-col items-center justify-center w-full gap-4 p-5 m-2 rounded-lg'>
-        <img src={imgSrc} alt='omni' />
-        <h1 className='text-xl text-center'>{entryPass.name}</h1>
-        <h2>You Own {userBalance}</h2>
-        <button
-          onClick={mintTokenOmni}
-          disabled={userCount == 0} // disable button if userCount is 0
-          className={`flex items-center justify-center px-10 py-2 bg-gradient-to-r from-[#FF3503] to-yellow-500 font-bold rounded-lg ${
-            userCount === 0 ? 'opacity-50' : ''
-          }`}
-        >
-          {userCount == 0 ? 'Mint Arb NFT First' : 'Mint Now'}
-        </button>
-      </div>
-    </div>
-  );
-};
+//   return (
+//     <div className='w-full flex justify-center items-center'>
+//       <ToastContainer />
+//       <div className='flex flex-col items-center justify-center w-full gap-4 p-5 m-2 rounded-lg'>
+//         <img src={imgSrc} alt='omni' />
+//         <h1 className='text-xl text-center'>{entryPass.name}</h1>
+//         <h2>You Own {userBalance}</h2>
+//         <button
+//           onClick={mintTokenOmni}
+//           disabled={userCount == 0} // disable button if userCount is 0
+//           className={`flex items-center justify-center px-10 py-2 bg-gradient-to-r from-[#FF3503] to-yellow-500 font-bold rounded-lg ${
+//             userCount === 0 ? 'opacity-50' : ''
+//           }`}
+//         >
+//           {userCount == 0 ? 'Mint Arb NFT First' : 'Mint Now'}
+//         </button>
+//       </div>
+//     </div>
+//   );
+// };
 
 // const Omni1Card = ({ entryPass, imgSrc }) => {
 //   const mintTokenOmni = async () => {
@@ -313,6 +406,7 @@ const ClaimMint = () => {
 
   return (
     <div className='w-full px-3 py-6 min-h-screen'>
+      <ToastContainer />
       <div className='flex flex-col items-center w-full h-full p-2 bg-black border-2 border-orange-700 rounded-lg'>
         <div className='flex flex-row items-center w-full gap-5'>
           <button
@@ -340,9 +434,9 @@ const ClaimMint = () => {
           {!select && (
             <>
               {entryPassData.map((entryPass) => {
-                if (entryPass.chain === 'Arbitrum') {
+                if (entryPass.chain === 'Shardeum') {
                   return (
-                    <ArbCard
+                    <ShardCard
                       key={entryPass._id}
                       entryPass={entryPass}
                       imgSrc='/arbitrum.png'
@@ -353,7 +447,7 @@ const ClaimMint = () => {
               })}
             </>
           )}
-          {!select && (
+          {/* {!select && (
             <div
               className='flex-1 flex justify-center items-center '
               style={{ flexBasis: '20%' }}
@@ -364,9 +458,9 @@ const ClaimMint = () => {
                 +
               </h1>
             </div>
-          )}
+          )} */}
 
-          {entryPassData.map((entryPass) => {
+          {/* {entryPassData.map((entryPass) => {
             // Conditionally render cards based on the type and chain
             if (select && entryPass.type === 'mainnet') {
               return <MainNetCard key={entryPass._id} entryPass={entryPass} />;
@@ -389,7 +483,7 @@ const ClaimMint = () => {
               }
               return null;
             }
-          })}
+          })} */}
 
           {/* {!select && ( */}
         </div>
