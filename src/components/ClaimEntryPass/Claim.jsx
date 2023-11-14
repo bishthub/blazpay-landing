@@ -11,7 +11,7 @@ const Claim = () => {
       <Navbar />
       <ClaimHero />
       <Gradient />
-      <ClaimMint />
+      {/* <ClaimMint /> */}
       <Footer />
     </div>
   );
