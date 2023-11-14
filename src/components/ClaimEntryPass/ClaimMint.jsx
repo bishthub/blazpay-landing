@@ -199,7 +199,11 @@ const ShardCard = ({ entryPass, imgSrc }) => {
   return (
     <div className='w-full flex justify-center items-center'>
       <div className=' flex flex-col items-center justify-center gap-4 p-5 m-2 rounded-lg'>
-        <img className='' src={imgSrc} alt='shardeum' />
+        <img
+          style={{ borderRadius: '5%', maxWidth: '70%' }}
+          src={imgSrc}
+          alt='shardeum'
+        />
         <h1 className='text-xl text-center'>{entryPass.name}</h1>
         <h2>You Own {userBalance}</h2>
         <button
@@ -439,7 +443,7 @@ const ClaimMint = () => {
                     <ShardCard
                       key={entryPass._id}
                       entryPass={entryPass}
-                      imgSrc='/arbitrum.png'
+                      imgSrc='/shardeum.jpg'
                     />
                   );
                 }
