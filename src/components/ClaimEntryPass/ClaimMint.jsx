@@ -450,7 +450,7 @@ const ClaimMint = () => {
           >
             TestNet
           </button>
-          <button
+          {/* <button
             onClick={HandleSelect}
             className={`rounded-2xl px-5 text-lg ${
               select
@@ -459,7 +459,7 @@ const ClaimMint = () => {
             }`}
           >
             MainNet
-          </button>
+          </button> */}
         </div>
         <div className='grid w-full grid-cols-1 gap-5 md:grid-cols-3'>
           {!select && (
