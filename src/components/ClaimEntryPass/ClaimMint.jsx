@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { ethers } from 'ethers';
+import zetaAbi from './zetaAbi.json';
 import arbAbi from './arbAbi.json';
-import omniAbi from './omniAbi.json';
+
 import shardeumAbi from './shardeum.json';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -60,6 +61,22 @@ const connectWallet = async (chain) => {
             ],
           });
         }
+      } else if (chain === 'zeta') {
+        if (network.chainId !== 7001) {
+          await window.ethereum.request({
+            method: 'wallet_addEthereumChain',
+            params: [
+              {
+                chainId: '0x1b59',
+                chainName: 'ZetaChain Athens 3 Testnet',
+                nativeCurrency: { name: 'ZETA', symbol: 'ZETA', decimals: 18 },
+                rpcUrls: [
+                  'https://zetachain-athens-evm.blockpi.network/v1/rpc/public',
+                ], // replace with the actual RPC
+              },
+            ],
+          });
+        }
       } else {
         await window.ethereum.request({ method: 'eth_requestAccounts' });
       }
@@ -69,95 +86,23 @@ const connectWallet = async (chain) => {
   }
 };
 
-// const ArbCard = ({ entryPass, imgSrc }) => {
-//   const [userBalance, setUserBalance] = useState(null);
-//   const [loading, setLoading] = useState(false);
-//   useEffect(() => {
-//     const fetchUserBalance = async () => {
-//       if (window.ethereum) {
-//         try {
-//           await connectWallet('arbitrum');
-//           const provider = new ethers.providers.Web3Provider(window.ethereum);
-//           const signer = provider.getSigner();
-//           const address = await signer.getAddress();
-//           const contract = new ethers.Contract(
-//             '0x2e84547878ced3b28c6060ec5b7afa0ec49892cc',
-//             arbAbi,
-//             signer
-//           );
-//           const balance = await contract.countByUser(address);
-//           setUserBalance(balance.toString());
-//         } catch (error) {
-//           console.error(error);
-//         }
-//       }
-//     };
-//     fetchUserBalance();
-//   }, []);
-//   const mintTokenArbitrum = async () => {
-//     if (window.ethereum) {
-//       try {
-//         await connectWallet('arbitrum'); // ensure wallet is connected and on the right network
-//         const provider = new ethers.providers.Web3Provider(window.ethereum);
-//         const signer = provider.getSigner();
-//         // replace with your contract's ABI
-//         const contractAbi = arbAbi;
-//         const contract = new ethers.Contract(
-//           '0x2e84547878ced3b28c6060ec5b7afa0ec49892cc',
-//           contractAbi,
-//           signer
-//         );
-//         const tx = await contract.increment();
-//         console.log('Transaction Sent:', tx.hash);
-//         await tx.wait(); // wait for transaction to be mined
-//         toast.success('Mint Successful, now please mint Omni Entry Pass', {
-//           onClose: () => window.location.reload(),
-//         });
-//         console.log('Transaction Mined: Omni', tx.hash);
-//       } catch (error) {
-//         console.error(error);
-//       }
-//     }
-//   };
-
-//   return (
-//     <div className='w-full flex justify-center items-center'>
-//       <div className=' flex flex-col items-center justify-center gap-4 p-5 m-2 rounded-lg'>
-//         <img className='' src={imgSrc} alt='omni' />
-//         <h1 className='text-xl text-center'>{entryPass.name}</h1>
-//         <h2>You Own {userBalance}</h2>
-//         <button
-//           onClick={mintTokenArbitrum}
-//           className='flex items-center justify-center px-10 py-2 bg-gradient-to-r from-[#FF3503] to-yellow-500 font-bold rounded-lg'
-//         >
-//           Get It Now
-//         </button>
-//       </div>
-//     </div>
-//   );
-// };
-
-const ShardCard = ({ entryPass, imgSrc }) => {
+const ZetaCard = ({ entryPass, imgSrc }) => {
   const [userBalance, setUserBalance] = useState(null);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     const fetchUserBalance = async () => {
       if (window.ethereum) {
         try {
-          await connectWallet('shardeum');
+          await connectWallet('zeta');
           const provider = new ethers.providers.Web3Provider(window.ethereum);
           const signer = provider.getSigner();
           const address = await signer.getAddress();
           const contract = new ethers.Contract(
-            '0x7ea13d779369e3b0b5F78cB050aD97DE6cA9CfBD',
-            shardeumAbi,
+            '0x4dE7CD522f1715b2a48F3ad6612924841d450A0F',
+            zetaAbi,
             signer
           );
           const balance = await contract.balanceOf(address);
-          console.log(
-            '🚀 ~ file: ClaimMint.jsx:157 ~ fetchUserBalance ~ balḁnce:',
-            balance
-          );
           setUserBalance(balance.toString());
         } catch (error) {
           console.error(error);
@@ -166,30 +111,32 @@ const ShardCard = ({ entryPass, imgSrc }) => {
     };
     fetchUserBalance();
   }, []);
-  const mintTokenShardeum = async () => {
+  const mintTokenZeta = async () => {
     if (window.ethereum) {
       try {
-        await connectWallet('shardeum'); // ensure wallet is connected and on the right network
+        await connectWallet('zeta'); // ensure wallet is connected and on the right network
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const signer = provider.getSigner();
-        const userAddress = await signer.getAddress();
+        // replace with your contract's ABI
+        const contractAbi = zetaAbi;
+        const address = await signer.getAddress();
         const contract = new ethers.Contract(
-          '0x7ea13d779369e3b0b5F78cB050aD97DE6cA9CfBD',
-          shardeumAbi,
+          '0x4dE7CD522f1715b2a48F3ad6612924841d450A0F',
+          contractAbi,
           signer
         );
-        const mintPrice = ethers.utils.parseEther('0.5'); // Replace '0.5' with the actual mint price
+        const mintPrice = ethers.utils.parseEther('1'); // Replace '0.5' with the actual mint price
         const overrides = {
           gasLimit: ethers.utils.hexlify(250000), // Adjust gas limit as needed
           value: mintPrice, // ETH amount for minting
         };
-        const tx = await contract.safeMint(userAddress, overrides);
+        const tx = await contract.safeMint(address, overrides);
         console.log('Transaction Sent:', tx.hash);
         await tx.wait(); // wait for transaction to be mined
-        toast.success('Mint Successful, Welcome to Blazpay world', {
+        toast.success('Mint Successful, now please mint Omni Entry Pass', {
           onClose: () => window.location.reload(),
         });
-        console.log('Transaction Mined: Shardeum', tx.hash);
+        console.log('Transaction Mined: Omni', tx.hash);
       } catch (error) {
         console.error(error);
       }
@@ -202,12 +149,12 @@ const ShardCard = ({ entryPass, imgSrc }) => {
         <img
           style={{ borderRadius: '5%', maxWidth: '70%' }}
           src={imgSrc}
-          alt='shardeum'
+          alt='zeta'
         />
         <h1 className='text-xl text-center'>{entryPass.name}</h1>
         <h2>You Own {userBalance}</h2>
         <button
-          onClick={mintTokenShardeum}
+          onClick={mintTokenZeta}
           className='flex items-center justify-center px-10 py-2 bg-gradient-to-r from-[#FF3503] to-yellow-500 font-bold rounded-lg'
         >
           Get It Now
@@ -216,6 +163,86 @@ const ShardCard = ({ entryPass, imgSrc }) => {
     </div>
   );
 };
+
+// const ShardCard = ({ entryPass, imgSrc }) => {
+//   const [userBalance, setUserBalance] = useState(null);
+//   const [loading, setLoading] = useState(false);
+//   useEffect(() => {
+//     const fetchUserBalance = async () => {
+//       if (window.ethereum) {
+//         try {
+//           await connectWallet('shardeum');
+//           const provider = new ethers.providers.Web3Provider(window.ethereum);
+//           const signer = provider.getSigner();
+//           const address = await signer.getAddress();
+//           const contract = new ethers.Contract(
+//             '0x7ea13d779369e3b0b5F78cB050aD97DE6cA9CfBD',
+//             shardeumAbi,
+//             signer
+//           );
+//           const balance = await contract.balanceOf(address);
+//           console.log(
+//             '🚀 ~ file: ClaimMint.jsx:157 ~ fetchUserBalance ~ balḁnce:',
+//             balance
+//           );
+//           setUserBalance(balance.toString());
+//         } catch (error) {
+//           console.error(error);
+//         }
+//       }
+//     };
+//     fetchUserBalance();
+//   }, []);
+//   const mintTokenShardeum = async () => {
+//     if (window.ethereum) {
+//       try {
+//         await connectWallet('shardeum'); // ensure wallet is connected and on the right network
+//         const provider = new ethers.providers.Web3Provider(window.ethereum);
+//         const signer = provider.getSigner();
+//         const userAddress = await signer.getAddress();
+//         const contract = new ethers.Contract(
+//           '0x7ea13d779369e3b0b5F78cB050aD97DE6cA9CfBD',
+//           shardeumAbi,
+//           signer
+//         );
+//         const mintPrice = ethers.utils.parseEther('0.5'); // Replace '0.5' with the actual mint price
+//         const overrides = {
+//           gasLimit: ethers.utils.hexlify(250000), // Adjust gas limit as needed
+//           value: mintPrice, // ETH amount for minting
+//         };
+//         const tx = await contract.safeMint(userAddress, overrides);
+//         console.log('Transaction Sent:', tx.hash);
+//         await tx.wait(); // wait for transaction to be mined
+//         toast.success('Mint Successful, Welcome to Blazpay world', {
+//           onClose: () => window.location.reload(),
+//         });
+//         console.log('Transaction Mined: Shardeum', tx.hash);
+//       } catch (error) {
+//         console.error(error);
+//       }
+//     }
+//   };
+
+//   return (
+//     <div className='w-full flex justify-center items-center'>
+//       <div className=' flex flex-col items-center justify-center gap-4 p-5 m-2 rounded-lg'>
+//         <img
+//           style={{ borderRadius: '5%', maxWidth: '70%' }}
+//           src={imgSrc}
+//           alt='shardeum'
+//         />
+//         <h1 className='text-xl text-center'>{entryPass.name}</h1>
+//         <h2>You Own {userBalance}</h2>
+//         <button
+//           onClick={mintTokenShardeum}
+//           className='flex items-center justify-center px-10 py-2 bg-gradient-to-r from-[#FF3503] to-yellow-500 font-bold rounded-lg'
+//         >
+//           Get It Now
+//         </button>
+//       </div>
+//     </div>
+//   );
+// };
 
 // const OmniCard = ({ entryPass, imgSrc, userCount }) => {
 //   console.log('USER COUNT', userCount);
@@ -438,12 +465,21 @@ const ClaimMint = () => {
           {!select && (
             <>
               {entryPassData.map((entryPass) => {
-                if (entryPass.chain === 'Shardeum') {
+                // if (entryPass.chain === 'Shardeum') {
+                //   return (
+                //     <ShardCard
+                //       key={entryPass._id}
+                //       entryPass={entryPass}
+                //       imgSrc='/shardeum.jpg'
+                //     />
+                //   );
+                // } else
+                if (entryPass.chain === 'Zeta') {
                   return (
-                    <ShardCard
+                    <ZetaCard
                       key={entryPass._id}
                       entryPass={entryPass}
-                      imgSrc='/shardeum.jpg'
+                      imgSrc='/zeta.jpg'
                     />
                   );
                 }
