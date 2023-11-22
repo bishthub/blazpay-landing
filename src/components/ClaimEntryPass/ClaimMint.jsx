@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { ethers } from 'ethers';
-import zetaAbi from './zetaAbi.json';
+import taikoAbi from './taikoAbi.json';
 import arbAbi from './arbAbi.json';
 
 import shardeumAbi from './shardeum.json';
@@ -46,33 +46,16 @@ const connectWallet = async (chain) => {
       //     });
       //   }
       // } else
-      if (chain === 'shardeum') {
-        if (network.chainId !== 8081) {
+      if (chain === 'taiko') {
+        if (network.chainId !== 167007) {
           await window.ethereum.request({
             method: 'wallet_addEthereumChain',
             params: [
               {
-                chainId: '0x1f91',
-                chainName: 'Shardeum Dapp Sphinx 1.X',
-                nativeCurrency: { name: 'SHM', symbol: 'SHM', decimals: 18 },
-                rpcUrls: ['https://dapps.shardeum.org'], // replace with the actual RPC
-                blockExplorerUrls: ['https://explorer-dapps.shardeum.org/'], // replace with the actual block explorer
-              },
-            ],
-          });
-        }
-      } else if (chain === 'zeta') {
-        if (network.chainId !== 7001) {
-          await window.ethereum.request({
-            method: 'wallet_addEthereumChain',
-            params: [
-              {
-                chainId: '0x1b59',
-                chainName: 'ZetaChain Athens 3 Testnet',
-                nativeCurrency: { name: 'ZETA', symbol: 'ZETA', decimals: 18 },
-                rpcUrls: [
-                  'https://zetachain-athens-evm.blockpi.network/v1/rpc/public',
-                ], // replace with the actual RPC
+                chainId: '0x28c5f',
+                chainName: 'Taiko Jolnir L2',
+                nativeCurrency: { name: 'ETH', symbol: 'ETH', decimals: 18 },
+                rpcUrls: ['https://rpc.jolnir.taiko.xyz'], // replace with the actual RPC
               },
             ],
           });
@@ -86,20 +69,20 @@ const connectWallet = async (chain) => {
   }
 };
 
-const ZetaCard = ({ entryPass, imgSrc }) => {
+const TaikoCard = ({ entryPass, imgSrc }) => {
   const [userBalance, setUserBalance] = useState(null);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     const fetchUserBalance = async () => {
       if (window.ethereum) {
         try {
-          await connectWallet('zeta');
+          await connectWallet('taiko');
           const provider = new ethers.providers.Web3Provider(window.ethereum);
           const signer = provider.getSigner();
           const address = await signer.getAddress();
           const contract = new ethers.Contract(
-            '0x4dE7CD522f1715b2a48F3ad6612924841d450A0F',
-            zetaAbi,
+            '0xFd92a3C7F4eE3AE4783dF6E05E92e3c4038C14f8',
+            taikoAbi,
             signer
           );
           const balance = await contract.balanceOf(address);
@@ -111,24 +94,23 @@ const ZetaCard = ({ entryPass, imgSrc }) => {
     };
     fetchUserBalance();
   }, []);
-  const mintTokenZeta = async () => {
+  const mintTokenTaiko = async () => {
     if (window.ethereum) {
       try {
-        await connectWallet('zeta'); // ensure wallet is connected and on the right network
+        await connectWallet('taiko'); // ensure wallet is connected and on the right network
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const signer = provider.getSigner();
         // replace with your contract's ABI
-        const contractAbi = zetaAbi;
+        const contractAbi = taikoAbi;
         const address = await signer.getAddress();
         const contract = new ethers.Contract(
-          '0x4dE7CD522f1715b2a48F3ad6612924841d450A0F',
+          '0xFd92a3C7F4eE3AE4783dF6E05E92e3c4038C14f8',
           contractAbi,
           signer
         );
         const mintPrice = ethers.utils.parseEther('1'); // Replace '0.5' with the actual mint price
         const overrides = {
           gasLimit: ethers.utils.hexlify(250000), // Adjust gas limit as needed
-          value: mintPrice, // ETH amount for minting
         };
         const tx = await contract.safeMint(address, overrides);
         console.log('Transaction Sent:', tx.hash);
@@ -149,12 +131,12 @@ const ZetaCard = ({ entryPass, imgSrc }) => {
         <img
           style={{ borderRadius: '5%', maxWidth: '70%' }}
           src={imgSrc}
-          alt='zeta'
+          alt='Taiko'
         />
         <h1 className='text-xl text-center'>{entryPass.name}</h1>
         <h2>You Own {userBalance}</h2>
         <button
-          onClick={mintTokenZeta}
+          onClick={mintTokenTaiko}
           className='flex items-center justify-center px-10 py-2 bg-gradient-to-r from-[#FF3503] to-yellow-500 font-bold rounded-lg'
         >
           Get It Now
@@ -474,12 +456,12 @@ const ClaimMint = () => {
                 //     />
                 //   );
                 // } else
-                if (entryPass.chain === 'Zeta') {
+                if (entryPass.chain === 'Taiko') {
                   return (
-                    <ZetaCard
+                    <TaikoCard
                       key={entryPass._id}
                       entryPass={entryPass}
-                      imgSrc='/zeta.jpg'
+                      imgSrc='/taiko.jpeg'
                     />
                   );
                 }
