@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import Gradient from "../utilities/Gradient";
-import logo from "../assets/latestlogo.png";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import Gradient from '../utilities/Gradient';
+import logo from '../assets/latestlogo.png';
+import { Link } from 'react-router-dom';
 const Navbar = () => {
   const [navbar, setNavbar] = useState();
   return (
@@ -60,7 +60,7 @@ const Navbar = () => {
           <div>
             <div
               className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
-                navbar ? "block" : "hidden"
+                navbar ? 'block' : 'hidden'
               }`}
             >
               <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
@@ -110,7 +110,7 @@ const Navbar = () => {
                       <span className="absolute bottom-0 left-0 w-24 h-24 -ml-10 bg-[#eb7e3f] rounded-full blur-md"></span>
                       <span className="absolute bottom-0 right-0 w-24 h-24 -mr-10 bg-[#F3B53D] rounded-full blur-md"></span>
                     </span>
-                    <Link to="/claim-entry-pass" className="w-full">
+                    <Link to="/claim-entry-pass/zeta" className="w-full">
                       <span className="relative text-white">
                         Claim Entry Pass
                       </span>

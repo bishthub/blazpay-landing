@@ -77,6 +77,24 @@ const connectWallet = async (chain) => {
             ],
           });
         }
+      } else if (chain === 'router') {
+        if (network.chainId !== 9601) {
+          await window.ethereum.request({
+            method: 'wallet_addEthereumChain',
+            params: [
+              {
+                chainId: '0x2581',
+                chainName: 'Router testnet',
+                nativeCurrency: {
+                  name: 'ROUTE',
+                  symbol: 'ROUTE',
+                  decimals: 18,
+                },
+                rpcUrls: ['https://evm.rpc.testnet.routerchain.dev'], // replace with the actual RPC
+              },
+            ],
+          });
+        }
       } else {
         await window.ethereum.request({ method: 'eth_requestAccounts' });
       }
@@ -144,18 +162,18 @@ const ZetaCard = ({ entryPass, imgSrc }) => {
   };
 
   return (
-    <div className='w-full flex justify-center items-center'>
-      <div className=' flex flex-col items-center justify-center gap-4 p-5 m-2 rounded-lg'>
+    <div className="w-full flex justify-center items-center">
+      <div className=" flex flex-col items-center justify-center gap-4 p-5 m-2 rounded-lg">
         <img
           style={{ borderRadius: '5%', maxWidth: '70%' }}
           src={imgSrc}
-          alt='zeta'
+          alt="zeta"
         />
-        <h1 className='text-xl text-center'>{entryPass.name}</h1>
+        <h1 className="text-xl text-center">{entryPass.name}</h1>
         <h2>You Own {userBalance}</h2>
         <button
           onClick={mintTokenZeta}
-          className='flex items-center justify-center px-10 py-2 bg-gradient-to-r from-[#FF3503] to-yellow-500 font-bold rounded-lg'
+          className="flex items-center justify-center px-10 py-2 bg-gradient-to-r from-[#FF3503] to-yellow-500 font-bold rounded-lg"
         >
           Get It Now
         </button>
@@ -436,10 +454,10 @@ const ClaimMint = () => {
   };
 
   return (
-    <div className='w-full px-3 py-6 min-h-screen'>
+    <div className="w-full px-3 py-6 min-h-screen">
       <ToastContainer />
-      <div className='flex flex-col items-center w-full h-full p-2 bg-black border-2 border-orange-700 rounded-lg'>
-        <div className='flex flex-row items-center w-full gap-5'>
+      <div className="flex flex-col items-center w-full h-full p-2 bg-black border-2 border-orange-700 rounded-lg">
+        <div className="flex flex-row items-center w-full gap-5">
           <button
             onClick={HandleSelect}
             className={`rounded-2xl px-5 text-lg ${
@@ -461,7 +479,7 @@ const ClaimMint = () => {
             MainNet
           </button> */}
         </div>
-        <div className='grid w-full grid-cols-1 gap-5 md:grid-cols-3'>
+        <div className="grid w-full grid-cols-1 gap-5 md:grid-cols-3">
           {!select && (
             <>
               {entryPassData.map((entryPass) => {
@@ -479,7 +497,7 @@ const ClaimMint = () => {
                     <ZetaCard
                       key={entryPass._id}
                       entryPass={entryPass}
-                      imgSrc='/zeta.jpg'
+                      imgSrc="/zeta.jpg"
                     />
                   );
                 }
