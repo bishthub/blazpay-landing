@@ -151,9 +151,12 @@ const ZetaCard = ({ entryPass, imgSrc }) => {
         const tx = await contract.safeMint(address, overrides);
         console.log('Transaction Sent:', tx.hash);
         await tx.wait(); // wait for transaction to be mined
-        toast.success('Mint Successful, now please mint Omni Entry Pass', {
-          onClose: () => window.location.reload(),
-        });
+        toast.success(
+          'Mint Successful, now you have access to Blazpay Dashboard',
+          {
+            onClose: () => window.location.reload(),
+          }
+        );
         console.log('Transaction Mined: Omni', tx.hash);
       } catch (error) {
         console.error(error);
