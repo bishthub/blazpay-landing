@@ -185,85 +185,85 @@ const ZetaCard = ({ entryPass, imgSrc }) => {
   );
 };
 
-// const ShardCard = ({ entryPass, imgSrc }) => {
-//   const [userBalance, setUserBalance] = useState(null);
-//   const [loading, setLoading] = useState(false);
-//   useEffect(() => {
-//     const fetchUserBalance = async () => {
-//       if (window.ethereum) {
-//         try {
-//           await connectWallet('shardeum');
-//           const provider = new ethers.providers.Web3Provider(window.ethereum);
-//           const signer = provider.getSigner();
-//           const address = await signer.getAddress();
-//           const contract = new ethers.Contract(
-//             '0x7ea13d779369e3b0b5F78cB050aD97DE6cA9CfBD',
-//             shardeumAbi,
-//             signer
-//           );
-//           const balance = await contract.balanceOf(address);
-//           console.log(
-//             '🚀 ~ file: ClaimMint.jsx:157 ~ fetchUserBalance ~ balḁnce:',
-//             balance
-//           );
-//           setUserBalance(balance.toString());
-//         } catch (error) {
-//           console.error(error);
-//         }
-//       }
-//     };
-//     fetchUserBalance();
-//   }, []);
-//   const mintTokenShardeum = async () => {
-//     if (window.ethereum) {
-//       try {
-//         await connectWallet('shardeum'); // ensure wallet is connected and on the right network
-//         const provider = new ethers.providers.Web3Provider(window.ethereum);
-//         const signer = provider.getSigner();
-//         const userAddress = await signer.getAddress();
-//         const contract = new ethers.Contract(
-//           '0x7ea13d779369e3b0b5F78cB050aD97DE6cA9CfBD',
-//           shardeumAbi,
-//           signer
-//         );
-//         const mintPrice = ethers.utils.parseEther('0.5'); // Replace '0.5' with the actual mint price
-//         const overrides = {
-//           gasLimit: ethers.utils.hexlify(250000), // Adjust gas limit as needed
-//           value: mintPrice, // ETH amount for minting
-//         };
-//         const tx = await contract.safeMint(userAddress, overrides);
-//         console.log('Transaction Sent:', tx.hash);
-//         await tx.wait(); // wait for transaction to be mined
-//         toast.success('Mint Successful, Welcome to Blazpay world', {
-//           onClose: () => window.location.reload(),
-//         });
-//         console.log('Transaction Mined: Shardeum', tx.hash);
-//       } catch (error) {
-//         console.error(error);
-//       }
-//     }
-//   };
+const ShardCard = ({ entryPass, imgSrc }) => {
+  const [userBalance, setUserBalance] = useState(null);
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    const fetchUserBalance = async () => {
+      if (window.ethereum) {
+        try {
+          await connectWallet('shardeum');
+          const provider = new ethers.providers.Web3Provider(window.ethereum);
+          const signer = provider.getSigner();
+          const address = await signer.getAddress();
+          const contract = new ethers.Contract(
+            '0x7ea13d779369e3b0b5F78cB050aD97DE6cA9CfBD',
+            shardeumAbi,
+            signer
+          );
+          const balance = await contract.balanceOf(address);
+          console.log(
+            '🚀 ~ file: ClaimMint.jsx:157 ~ fetchUserBalance ~ balḁnce:',
+            balance
+          );
+          setUserBalance(balance.toString());
+        } catch (error) {
+          console.error(error);
+        }
+      }
+    };
+    fetchUserBalance();
+  }, []);
+  const mintTokenShardeum = async () => {
+    if (window.ethereum) {
+      try {
+        await connectWallet('shardeum'); // ensure wallet is connected and on the right network
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = provider.getSigner();
+        const userAddress = await signer.getAddress();
+        const contract = new ethers.Contract(
+          '0x7ea13d779369e3b0b5F78cB050aD97DE6cA9CfBD',
+          shardeumAbi,
+          signer
+        );
+        const mintPrice = ethers.utils.parseEther('0.5'); // Replace '0.5' with the actual mint price
+        const overrides = {
+          gasLimit: ethers.utils.hexlify(250000), // Adjust gas limit as needed
+          value: mintPrice, // ETH amount for minting
+        };
+        const tx = await contract.safeMint(userAddress, overrides);
+        console.log('Transaction Sent:', tx.hash);
+        await tx.wait(); // wait for transaction to be mined
+        toast.success('Mint Successful, Welcome to Blazpay world', {
+          onClose: () => window.location.reload(),
+        });
+        console.log('Transaction Mined: Shardeum', tx.hash);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  };
 
-//   return (
-//     <div className='w-full flex justify-center items-center'>
-//       <div className=' flex flex-col items-center justify-center gap-4 p-5 m-2 rounded-lg'>
-//         <img
-//           style={{ borderRadius: '5%', maxWidth: '70%' }}
-//           src={imgSrc}
-//           alt='shardeum'
-//         />
-//         <h1 className='text-xl text-center'>{entryPass.name}</h1>
-//         <h2>You Own {userBalance}</h2>
-//         <button
-//           onClick={mintTokenShardeum}
-//           className='flex items-center justify-center px-10 py-2 bg-gradient-to-r from-[#FF3503] to-yellow-500 font-bold rounded-lg'
-//         >
-//           Get It Now
-//         </button>
-//       </div>
-//     </div>
-//   );
-// };
+  return (
+    <div className="w-full flex justify-center items-center">
+      <div className=" flex flex-col items-center justify-center gap-4 p-5 m-2 rounded-lg">
+        <img
+          style={{ borderRadius: '5%', maxWidth: '70%' }}
+          src={imgSrc}
+          alt="shardeum"
+        />
+        <h1 className="text-xl text-center">{entryPass.name}</h1>
+        <h2>You Own {userBalance}</h2>
+        <button
+          onClick={mintTokenShardeum}
+          className="flex items-center justify-center px-10 py-2 bg-gradient-to-r from-[#FF3503] to-yellow-500 font-bold rounded-lg"
+        >
+          Get It Now
+        </button>
+      </div>
+    </div>
+  );
+};
 
 // const OmniCard = ({ entryPass, imgSrc, userCount }) => {
 //   console.log('USER COUNT', userCount);
@@ -486,24 +486,24 @@ const ClaimMint = () => {
           {!select && (
             <>
               {entryPassData.map((entryPass) => {
-                // if (entryPass.chain === 'Shardeum') {
-                //   return (
-                //     <ShardCard
-                //       key={entryPass._id}
-                //       entryPass={entryPass}
-                //       imgSrc='/shardeum.jpg'
-                //     />
-                //   );
-                // } else
-                if (entryPass.chain === 'Zeta') {
+                if (entryPass.chain === 'Shardeum') {
                   return (
-                    <ZetaCard
+                    <ShardCard
                       key={entryPass._id}
                       entryPass={entryPass}
-                      imgSrc="/zeta.jpg"
+                      imgSrc="/shardeum.jpg"
                     />
                   );
                 }
+                // else if (entryPass.chain === 'Zeta') {
+                //   return (
+                //     <ZetaCard
+                //       key={entryPass._id}
+                //       entryPass={entryPass}
+                //       imgSrc="/zeta.jpg"
+                //     />
+                //   );
+                // }
                 return null;
               })}
             </>

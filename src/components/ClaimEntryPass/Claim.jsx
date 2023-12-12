@@ -4,6 +4,7 @@ import ClaimHero from './ClaimHero';
 import Gradient from '../../utilities/Gradient';
 import ClaimZeta from './ClaimZeta';
 import Footer from '../Footer';
+import ClaimMint from './ClaimMint';
 
 const Claim = () => {
   return (
@@ -11,7 +12,7 @@ const Claim = () => {
       <Navbar />
       <ClaimHero />
       <Gradient />
-      <ClaimZeta />
+      <ClaimMint />
       <Footer />
     </div>
   );
