@@ -1,3 +1,13 @@
 *{
     scroll-behavior: smooth;
 }
+
+.bishtS{
+    max-height: 40%;
+}
+
+@media(min-width: 468px){
+    .bishtS{
+        max-height: 90%;
+    }
+}

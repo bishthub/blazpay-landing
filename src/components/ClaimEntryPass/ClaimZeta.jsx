@@ -93,11 +93,11 @@ const ZetaCard = ({ entryPass, imgSrc, onMintSuccess }) => {
           );
 
           const contract = new ethers.Contract(
-            '0x32c801Aa5fa045D3179C65D3F89f88dad272F4E8',
+            '0x7ea13d779369e3b0b5F78cB050aD97DE6cA9CfBD',
             goerliAbi,
             signer
           );
-          const ownedTokenIds = await contract.getOwnedTokens(address);
+          const ownedTokenIds = await contract.balanceOf(address);
           console.log('Owned Token IDs:', ownedTokenIds);
           const balance = await contract.balanceOf(address);
           console.log(
@@ -119,13 +119,13 @@ const ZetaCard = ({ entryPass, imgSrc, onMintSuccess }) => {
         const signer = provider.getSigner();
         const address = await signer.getAddress();
         const contract = new ethers.Contract(
-          '0x32c801Aa5fa045D3179C65D3F89f88dad272F4E8', // Replace with your contract address
+          '0x7ea13d779369e3b0b5F78cB050aD97DE6cA9CfBD', // Replace with your contract address
           goerliAbi, // Replace with the correct ABI that includes getOwnedTokens
           signer
         );
 
         // Fetching the owned token IDs
-        const ownedTokenIds = await contract.getOwnedTokens(address);
+        const ownedTokenIds = await contract.balanceOf(address);
         console.log('Owned Token IDs:', ownedTokenIds);
 
         // You can use the last token ID here or pass it to other functions
@@ -144,29 +144,45 @@ const ZetaCard = ({ entryPass, imgSrc, onMintSuccess }) => {
         await connectWallet('goerli'); // ensure wallet is connected and on the right network
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const signer = provider.getSigner();
-        // replace with your contract's ABI
         const contractAbi = goerliAbi;
         const address = await signer.getAddress();
         const contract = new ethers.Contract(
-          '0x32c801Aa5fa045D3179C65D3F89f88dad272F4E8',
+          '0x7ea13d779369e3b0b5F78cB050aD97DE6cA9CfBD',
           contractAbi,
           signer
         );
-        // const mintPrice = ethers.utils.parseEther('1'); // Replace '0.5' with the actual mint price
         const overrides = {
-          gasLimit: ethers.utils.hexlify(250000), // Adjust gas limit as needed
-          //   value: mintPrice, // ETH amount for minting
+          gasLimit: ethers.utils.hexlify(2500000), // Adjust gas limit as needed
         };
         const tx = await contract.mint(address, overrides);
 
-        await tx.wait(); // wait for transaction to be mined
+        // Wait for the transaction to be mined
+        await tx.wait();
+        const receipt = await provider.getTransactionReceipt(tx.hash);
+
+        // Create an Interface object to decode logs
+        const contractInterface = new ethers.utils.Interface(contractAbi);
+        let mintedTokenId;
+        // Parse logs to find the BlazpayXZetaEvent
+        receipt.logs.forEach((log) => {
+          try {
+            const parsedLog = contractInterface.parseLog(log);
+            if (parsedLog.name === 'BlazpayXZetaEvent') {
+              console.log('BlazpayXZetaEvent:', parsedLog.args);
+              mintedTokenId = parsedLog.args[0];
+            }
+          } catch (error) {
+            // This will catch if log is not from our contract
+          }
+        });
+        if (mintedTokenId !== undefined) {
+          onMintSuccess(mintedTokenId.toString()); // Call the callback with the minted tokenId
+        }
+
         toast.success(
           'Mint Successful, now you have access to Blazpay Dashboard'
-          //   {
-          //     onClose: () => window.location.reload(),
-          //   }
         );
-        console.log('Transaction Mined: Goerli', tx.hash);
+        console.log('Transaction Hash:', tx.hash);
         await fetchOwnedTokenIds();
       } catch (error) {
         console.error(error);
@@ -202,7 +218,7 @@ const MaticCard = ({ entryPass, imgSrc, tokenId }) => {
     const fetchUserBalance = async () => {
       if (window.ethereum) {
         try {
-          await connectWallet('goerli');
+          await connectWallet('mumbai');
           const provider = new ethers.providers.Web3Provider(window.ethereum);
           const signer = provider.getSigner();
           const address = await signer.getAddress();
@@ -210,16 +226,14 @@ const MaticCard = ({ entryPass, imgSrc, tokenId }) => {
             '🚀 ~ file: ClaimZeta.jsx:90 ~ fetchUserBalance ~ address:',
             address
           );
+
           const contract = new ethers.Contract(
-            '0x32c801Aa5fa045D3179C65D3F89f88dad272F4E8',
+            '0x0768BDD56A00Fe7E18A91033d4b84Ddbb74d0201',
             goerliAbi,
             signer
           );
           const balance = await contract.balanceOf(address);
-          console.log(
-            '🚀 ~ file: ClaimZeta.jsx:96 ~ fetchUserBalance ~ balance:',
-            balance
-          );
+          console.log('🚀  balance:', balance.toString());
           setUserBalance(balance.toString());
         } catch (error) {
           console.error(error);
@@ -238,29 +252,49 @@ const MaticCard = ({ entryPass, imgSrc, tokenId }) => {
     if (window.ethereum) {
       try {
         console.log('TOKEN: ', tokenId);
-        await connectWallet('goerli'); // Switch to Matic Mumbai network
+        await connectWallet('goerli'); // Initially connect to Goerli network
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const signer = provider.getSigner();
         const contract = new ethers.Contract(
-          '0x32c801Aa5fa045D3179C65D3F89f88dad272F4E8',
+          '0x7ea13d779369e3b0b5F78cB050aD97DE6cA9CfBD',
           goerliAbi,
           signer
         );
-
+        const overrides = {
+          gasLimit: ethers.utils.hexlify(2500000), // Adjust gas limit as needed
+        };
         const destination = 80001; // Chain ID for Mumbai
         const paramTo = await signer.getAddress(); // msg.sender address
-        const value = ethers.utils.parseUnits('0.001', 'ether'); // Goerli ETH amount
+        const value = ethers.utils.parseUnits('0.1', 'ether'); // Goerli ETH amount
 
+        // Include the overrides in the contract method call
         const tx = await contract.sendMessage(destination, tokenId, paramTo, {
+          ...overrides,
           value,
         });
         console.log('Transaction Sent:', tx.hash);
+
+        // Wait for the transaction to be mined
         await tx.wait();
+
+        // Transaction is successful, now switch to Mumbai network
+        await connectWallet('mumbai');
+
         toast.success('Message sent successfully');
       } catch (error) {
         console.error('Failed to send message:', error);
         toast.error(`Failed to send message: ${error.message}`);
       }
+    }
+  };
+
+  const sendMessageHandler = () => {
+    if (tokenId) {
+      sendMessage(tokenId);
+      console.log('TOKENID', tokenId);
+    } else {
+      sendMessage(4);
+      console.log('No tokenId available');
     }
   };
 
@@ -275,7 +309,8 @@ const MaticCard = ({ entryPass, imgSrc, tokenId }) => {
         <h1 className="text-xl text-center">{entryPass.name}</h1>
         <h2>You Own {userBalance}</h2>
         <button
-          onClick={sendMessage}
+          onClick={sendMessageHandler}
+          style={{ visibility: 'hidden' }}
           className="flex items-center justify-center px-10 py-2 bg-gradient-to-r from-[#FF3503] to-yellow-500 font-bold rounded-lg"
         >
           Get It Now
@@ -303,7 +338,7 @@ const ClaimZeta = () => {
         const signer = provider.getSigner();
         const address = await signer.getAddress();
         const contract = new ethers.Contract(
-          '0x2e84547878ced3b28c6060ec5b7afa0ec49892cc',
+          '0x7ea13d779369e3b0b5F78cB050aD97DE6cA9CfBD',
           arbAbi,
           signer
         );
@@ -348,6 +383,7 @@ const ClaimZeta = () => {
             TestNet
           </button>
         </div>
+
         <div className="grid w-full grid-cols-1 gap-5 md:grid-cols-3">
           {!select && (
             <>
@@ -361,11 +397,11 @@ const ClaimZeta = () => {
                       onMintSuccess={handleMintSuccess} // Pass the callback to ZetaCard
                     />
                   );
-                } else if (entryPass.chain === 'Arbitrum') {
+                } else if (entryPass.chain === 'Mumbai') {
                   return (
                     <MaticCard
                       entryPass={entryPass}
-                      imgSrc={entryPass.image_link}
+                      imgSrc="/zeta.jpg"
                       alt="MATIC"
                       tokenId={tokenId} // Pass the tokenId to MaticCard
                     />
@@ -375,7 +411,27 @@ const ClaimZeta = () => {
               })}
             </>
           )}
-          {}
+          <div
+            className="w-full bg-orange-500 p-5 flex items-center flex-col rounded-3xl bishtS mt-5 md:gap-10"
+            style={{ maxWidth: '80%' }}
+          >
+            <div className="flex flex-col ">
+              <h1 className="font-bold text-xl md:text-3xl text-white w-full md:mr-auto">
+                Note:
+              </h1>
+              <br />
+              <p className="text-white font-semibold">
+                1. To Get Cross Chain Entry Pass of Zeta Chain first mint the
+                Zeta NFT on Goerli Network and then approve the transaction
+                again by sending 0.1GETH.
+              </p>
+              <br />
+              <p className="text-white font-semibold">
+                2. After you have approved the transaction twice you will be
+                able to see the Mumbai x Zeta Entry Pass after 15 minutes.
+              </p>
+            </div>
+          </div>
         </div>
 
         {}
