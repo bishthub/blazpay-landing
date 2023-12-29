@@ -544,7 +544,7 @@ const ClaimZeta = () => {
           </button>
         </div>
 
-        <div className="grid w-full grid-cols-1 gap-5 md:grid-cols-3">
+        {/* <div className="grid w-full grid-cols-1 gap-5 md:grid-cols-3">
           {!select && (
             <>
               {entryPassData.map((entryPass) => {
@@ -601,7 +601,7 @@ const ClaimZeta = () => {
 
         <div className="w-full flex justify-center items-center m-10">
           <h1 style={{ fontSize: '3rem', fontWeight: '900' }}>OR</h1>
-        </div>
+        </div> */}
 
         <div className="flex flex-col md:flex-row justify-center items-center">
           {entryPassData.map((entryPass) => {
