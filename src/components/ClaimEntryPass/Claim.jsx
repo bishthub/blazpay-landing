@@ -12,7 +12,7 @@ const Claim = () => {
       <Navbar />
       <ClaimHero />
       <Gradient />
-      <ClaimZeta />
+      <ClaimMint />
       <Footer />
     </div>
   );
