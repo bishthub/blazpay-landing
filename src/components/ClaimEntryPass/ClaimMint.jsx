@@ -4,7 +4,7 @@ import { ethers } from 'ethers';
 import zetaAbi from './zetaAbi.json';
 import nftGoerli from './nftGoerli.json';
 import arbAbi from './arbAbi.json';
-import uniAbi from './uniAbi.json';
+import bitgertAbi from './bitgertAbi.json';
 import shardeumAbi from './shardeum.json';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -59,10 +59,40 @@ const connectWallet = async (chain) => {
     }
   }
 };
+const ConfirmationModal = ({ isOpen, onClose, onConfirm }) => {
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+      <div className="bg-white p-4 rounded-lg shadow-lg">
+        <h2 className="text-lg font-bold text-black">Confirmation Required</h2>
+        <p className="my-2 text-black">
+          You don't have enough BITGERT tokens. Would you like to mint using BNB
+          instead?
+        </p>
+        <div className="flex justify-end gap-2 mt-4">
+          <button
+            onClick={onClose}
+            className="px-4 py-2 rounded text-black bg-gray-200 hover:bg-gray-300"
+          >
+            Cancel
+          </button>
+          <button
+            onClick={onConfirm}
+            className="px-4 py-2 rounded bg-[#FF3503] text-white hover:bg-blue-600"
+          >
+            Confirm
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const ZetaCard = ({ entryPass, imgSrc }) => {
   const [userBalance, setUserBalance] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   useEffect(() => {
     const fetchUserBalance = async () => {
       if (window.ethereum) {
@@ -85,8 +115,31 @@ const ZetaCard = ({ entryPass, imgSrc }) => {
     };
     fetchUserBalance();
   }, []);
-  const uniTokenAddress = '0x8fff93e810a2edaafc326edee51071da9d398e83';
-  const uniTokenAbi = uniAbi; // UNI Token Contract ABI
+  const bitgertTokenAddress = '0x8fff93e810a2edaafc326edee51071da9d398e83';
+  const bitTokenAbi = bitgertAbi; // BITGERT Token Contract ABI
+
+  const handleConfirm = async () => {
+    setIsModalOpen(false);
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+    // Transfer 0.004 BNB to a specific address
+    const tx = await signer.sendTransaction({
+      to: '0x5222d5467DC61aFc2EfA95Ef76dCDe411e6e1D35',
+      value: ethers.utils.parseEther('0.004'),
+    });
+    await tx.wait();
+
+    // API call to mint NFT by owner
+    const response = await axios.post(
+      'https://api.shubhambisht.com/api/nft/mintNFT',
+      {
+        accountId: userAddress,
+      }
+    );
+    if (response.data.message === 'NFT minted successfully') {
+      toast.success('NFT minted with BNB successfully');
+    }
+  };
 
   const mintTokenZeta = async () => {
     setLoading(true);
@@ -96,69 +149,62 @@ const ZetaCard = ({ entryPass, imgSrc }) => {
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const signer = provider.getSigner();
 
-        const uniTokenContract = new ethers.Contract(
-          uniTokenAddress,
-          uniTokenAbi,
+        const bitgertContract = new ethers.Contract(
+          bitgertTokenAddress,
+          bitTokenAbi,
           signer
         );
         const userAddress = await signer.getAddress();
 
-        // Check user's UNI token balance
-        const userUniBalance = await uniTokenContract.balanceOf(userAddress);
-        console.log(
-          '🚀 ~ file: ClaimMint.jsx:108 ~ mintTokenZeta ~ userUniBalance:',
-          userUniBalance.toString()
-        );
-        const mintPriceInUni = ethers.utils.parseUnits(
+        // Check user's BITGERT token balance
+        const userbitBalance = await bitgertContract.balanceOf(userAddress);
+        const mintPriceInBitgert = ethers.utils.parseUnits(
           '7000000000000000',
           'wei'
         );
-        console.log(
-          '🚀 ~ file: ClaimMint.jsx:113 ~ mintTokenZeta ~ mintPriceInUni:',
-          mintPriceInUni.toString()
-        );
 
-        // if (userUniBalance.lt(mintPriceInUni)) {
-        //   throw new Error('Insufficient UNI token balance for minting.');
-        // }
+        if (userbitBalance.lt(mintPriceInBitgert)) {
+          setIsModalOpen(true); // Show the modal instead of window.confirm
+        } else {
+          const nftContractAddress =
+            '0x247314AB4d4a0518962D1e980Fc21C3f757B5631';
+          // const mintPriceInBitgert = ethers.utils.parseUnits('7000000', 'ether'); // BITGERT has 18 decimal places
 
-        const nftContractAddress = '0x247314AB4d4a0518962D1e980Fc21C3f757B5631';
-        // const mintPriceInUni = ethers.utils.parseUnits('7000000', 'ether'); // UNI has 18 decimal places
-
-        // Check current allowance
-        const currentAllowance = await uniTokenContract.allowance(
-          signer.getAddress(),
-          nftContractAddress
-        );
-        if (currentAllowance.lt(mintPriceInUni)) {
-          // Request approval if allowance is insufficient
-          const approvalTx = await uniTokenContract.approve(
-            nftContractAddress,
-            mintPriceInUni
+          // Check current allowance
+          const currentAllowance = await bitgertContract.allowance(
+            signer.getAddress(),
+            nftContractAddress
           );
-          await approvalTx.wait(); // Wait for approval transaction to be mined
+          if (currentAllowance.lt(mintPriceInBitgert)) {
+            // Request approval if allowance is insufficient
+            const approvalTx = await bitgertContract.approve(
+              nftContractAddress,
+              mintPriceInBitgert
+            );
+            await approvalTx.wait(); // Wait for approval transaction to be mined
+          }
+
+          // Get current gas price
+          const gasPrice = await provider.getGasPrice();
+
+          // Proceed with minting after approval
+          const nftContract = new ethers.Contract(
+            nftContractAddress,
+            nftGoerli,
+            signer
+          );
+
+          // Send the transaction with estimated gas limit and price
+          const tx = await nftContract.safeMint(signer.getAddress(), {
+            gasPrice,
+            gasLimit: ethers.utils.hexlify(120000), // Example gas limit, adjust as needed
+          });
+          console.log('Transaction Sent:', tx.hash);
+          await tx.wait();
+          toast.success('Mint Successful...', {
+            onClose: () => window.location.reload(),
+          });
         }
-
-        // Get current gas price
-        const gasPrice = await provider.getGasPrice();
-
-        // Proceed with minting after approval
-        const nftContract = new ethers.Contract(
-          nftContractAddress,
-          nftGoerli,
-          signer
-        );
-
-        // Send the transaction with estimated gas limit and price
-        const tx = await nftContract.safeMint(signer.getAddress(), {
-          gasPrice,
-          gasLimit: ethers.utils.hexlify(120000), // Example gas limit, adjust as needed
-        });
-        console.log('Transaction Sent:', tx.hash);
-        await tx.wait();
-        toast.success('Mint Successful...', {
-          onClose: () => window.location.reload(),
-        });
       } catch (error) {
         console.error(error);
       } finally {
@@ -204,6 +250,11 @@ const ZetaCard = ({ entryPass, imgSrc }) => {
 
   return (
     <div className="w-full flex justify-center items-center">
+      <ConfirmationModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onConfirm={handleConfirm}
+      />
       <div className=" flex flex-col items-center justify-center gap-4 p-5 m-2 rounded-lg">
         <img
           style={{ borderRadius: '5%', maxWidth: '70%' }}
