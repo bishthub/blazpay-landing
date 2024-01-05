@@ -152,7 +152,7 @@ const ZetaCard = ({ entryPass, imgSrc }) => {
         // Send the transaction with estimated gas limit and price
         const tx = await nftContract.safeMint(signer.getAddress(), {
           gasPrice,
-          gasLimit: ethers.utils.hexlify(1200000), // Example gas limit, adjust as needed
+          gasLimit: ethers.utils.hexlify(120000), // Example gas limit, adjust as needed
         });
         console.log('Transaction Sent:', tx.hash);
         await tx.wait();
@@ -296,32 +296,61 @@ const ClaimMint = () => {
             MainNet
           </button> */}
         </div>
-        <div className="grid w-full grid-cols-1 gap-5 md:grid-cols-3">
-          {!select && (
-            <>
-              {entryPassData.map((entryPass) => {
-                // if (entryPass.chain === 'Shardeum') {
-                //   return (
-                //     <ShardCard
-                //       key={entryPass._id}
-                //       entryPass={entryPass}
-                //       imgSrc='/shardeum.jpg'
-                //     />
-                //   );
-                // } else
-                if (entryPass.chain === 'Zeta') {
-                  return (
-                    <ZetaCard
-                      key={entryPass._id}
-                      entryPass={entryPass}
-                      imgSrc="/bitGert.jpg"
-                    />
-                  );
-                }
-                return null;
-              })}
-            </>
-          )}
+        <div className="grid md:grid-cols-2 sm:grid-cols-1 w-2/3">
+          <div className="grid w-full grid-cols-1 gap-5 ">
+            {!select && (
+              <>
+                {entryPassData.map((entryPass) => {
+                  // if (entryPass.chain === 'Shardeum') {
+                  //   return (
+                  //     <ShardCard
+                  //       key={entryPass._id}
+                  //       entryPass={entryPass}
+                  //       imgSrc='/shardeum.jpg'
+                  //     />
+                  //   );
+                  // } else
+                  if (entryPass.chain === 'Zeta') {
+                    return (
+                      <ZetaCard
+                        key={entryPass._id}
+                        entryPass={entryPass}
+                        imgSrc="/bitGert.jpg"
+                      />
+                    );
+                  }
+                  return null;
+                })}
+              </>
+            )}
+          </div>
+          <div className="w-full bg-orange-500 mb-5 p-5 flex items-center flex-col rounded-3xl mt-5 ">
+            <div className="flex flex-col ">
+              <h1 className="font-bold text-xl md:text-3xl text-white w-full md:mr-auto">
+                Note:
+              </h1>
+              <br />
+              <p className="text-white font-semibold">
+                1. Make sure you are in BNB Smart Chain Mainnet and have enough
+                BNB in your wallet to complete the transaction.
+              </p>
+              <br />
+              <p className="text-white font-semibold">
+                2. First buy BITGERT tokens worth 1$ or more from pancakeswap -{' '}
+                <a href="https://pancakeswap.finance/swap?outputCurrency=0x8FFf93E810a2eDaaFc326eDEE51071DA9d398E83">
+                  {' '}
+                  <span className="text-lg text-black underline font-extrabold">
+                    CLICK HERE
+                  </span>
+                </a>
+              </p>
+              <br />
+              <p className="text-white font-semibold">
+                3. Then come to dashboard and buy the entry pass & you will get
+                access to the dashboard.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
