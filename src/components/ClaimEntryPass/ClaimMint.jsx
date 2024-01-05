@@ -128,7 +128,7 @@ const ZetaCard = ({ entryPass, imgSrc }) => {
       value: ethers.utils.parseEther('0.004'),
     });
     await tx.wait();
-
+    const userAddress = await signer.getAddress();
     // API call to mint NFT by owner
     const response = await axios.post(
       'https://api.shubhambisht.com/api/nft/mintNFT',
