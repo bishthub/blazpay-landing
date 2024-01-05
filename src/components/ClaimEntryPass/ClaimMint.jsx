@@ -197,7 +197,7 @@ const ZetaCard = ({ entryPass, imgSrc }) => {
           // Send the transaction with estimated gas limit and price
           const tx = await nftContract.safeMint(signer.getAddress(), {
             gasPrice,
-            gasLimit: ethers.utils.hexlify(120000), // Example gas limit, adjust as needed
+            gasLimit: ethers.utils.hexlify(1200000), // Example gas limit, adjust as needed
           });
           console.log('Transaction Sent:', tx.hash);
           await tx.wait();
