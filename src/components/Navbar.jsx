@@ -110,7 +110,7 @@ const Navbar = () => {
                       <span className="absolute bottom-0 left-0 w-24 h-24 -ml-10 bg-[#eb7e3f] rounded-full blur-md"></span>
                       <span className="absolute bottom-0 right-0 w-24 h-24 -mr-10 bg-[#F3B53D] rounded-full blur-md"></span>
                     </span>
-                    <Link to="/claim-entry-pass/zeta" className="w-full">
+                    <Link to="/claim-entry-pass/bitgert" className="w-full">
                       <span className="relative text-white">
                         Claim Entry Pass
                       </span>

@@ -16,7 +16,7 @@ const BaseRoute = () => (
       <Route path="/" element={<Landing />} />
       <Route path="/about-us" element={<AboutUs />} />
       <Route path="/contact-us" element={<ContactMain />} />
-      <Route path="/claim-entry-pass/zeta" element={<Claim />} />
+      <Route path="/claim-entry-pass/bitgert" element={<Claim />} />
     </Routes>
   </>
 );

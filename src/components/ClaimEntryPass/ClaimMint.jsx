@@ -72,7 +72,7 @@ const ZetaCard = ({ entryPass, imgSrc }) => {
           const signer = provider.getSigner();
           const address = await signer.getAddress();
           const contract = new ethers.Contract(
-            '0x427539B9f81cd890b554e4f3F36eBa6D6d96e61a',
+            '0x247314AB4d4a0518962D1e980Fc21C3f757B5631',
             nftGoerli,
             signer
           );
@@ -85,24 +85,45 @@ const ZetaCard = ({ entryPass, imgSrc }) => {
     };
     fetchUserBalance();
   }, []);
-  const uniTokenAddress = '0x8FFf93E810a2eDaaFc326eDEE51071DA9d398E83';
+  const uniTokenAddress = '0x8fff93e810a2edaafc326edee51071da9d398e83';
   const uniTokenAbi = uniAbi; // UNI Token Contract ABI
 
   const mintTokenZeta = async () => {
+    setLoading(true);
     if (window.ethereum) {
-      setLoading(true); // Start loading
       try {
         await connectWallet('binance');
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const signer = provider.getSigner();
+
         const uniTokenContract = new ethers.Contract(
           uniTokenAddress,
           uniTokenAbi,
           signer
         );
+        const userAddress = await signer.getAddress();
 
-        const nftContractAddress = '0x427539B9f81cd890b554e4f3F36eBa6D6d96e61a';
-        const mintPriceInUni = ethers.utils.parseUnits('7000000', 'ether'); // UNI has 18 decimal places
+        // Check user's UNI token balance
+        const userUniBalance = await uniTokenContract.balanceOf(userAddress);
+        console.log(
+          '🚀 ~ file: ClaimMint.jsx:108 ~ mintTokenZeta ~ userUniBalance:',
+          userUniBalance.toString()
+        );
+        const mintPriceInUni = ethers.utils.parseUnits(
+          '7000000000000000',
+          'wei'
+        );
+        console.log(
+          '🚀 ~ file: ClaimMint.jsx:113 ~ mintTokenZeta ~ mintPriceInUni:',
+          mintPriceInUni.toString()
+        );
+
+        // if (userUniBalance.lt(mintPriceInUni)) {
+        //   throw new Error('Insufficient UNI token balance for minting.');
+        // }
+
+        const nftContractAddress = '0x247314AB4d4a0518962D1e980Fc21C3f757B5631';
+        // const mintPriceInUni = ethers.utils.parseUnits('7000000', 'ether'); // UNI has 18 decimal places
 
         // Check current allowance
         const currentAllowance = await uniTokenContract.allowance(
@@ -128,16 +149,10 @@ const ZetaCard = ({ entryPass, imgSrc }) => {
           signer
         );
 
-        // Estimate gas limit
-        const estimatedGasLimit = await nftContract.estimateGas.safeMint(
-          signer.getAddress(),
-          { gasPrice }
-        );
-
         // Send the transaction with estimated gas limit and price
         const tx = await nftContract.safeMint(signer.getAddress(), {
           gasPrice,
-          gasLimit: ethers.utils.hexlify(25000000), // Example gas limit, adjust as needed
+          gasLimit: ethers.utils.hexlify(1200000), // Example gas limit, adjust as needed
         });
         console.log('Transaction Sent:', tx.hash);
         await tx.wait();
@@ -162,7 +177,7 @@ const ZetaCard = ({ entryPass, imgSrc }) => {
   //       const contractAbi = zetaAbi;
   //       const address = await signer.getAddress();
   //       const contract = new ethers.Contract(
-  //         '0x427539B9f81cd890b554e4f3F36eBa6D6d96e61a',
+  //         '0x247314AB4d4a0518962D1e980Fc21C3f757B5631',
   //         contractAbi,
   //         signer
   //       );
@@ -226,7 +241,7 @@ const ClaimMint = () => {
   //       const signer = provider.getSigner();
   //       const address = await signer.getAddress();
   //       const contract = new ethers.Contract(
-  //         '0x427539B9f81cd890b554e4f3F36eBa6D6d96e61a',
+  //         '0x247314AB4d4a0518962D1e980Fc21C3f757B5631',
   //         arbAbi,
   //         signer
   //       );
