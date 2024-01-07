@@ -159,7 +159,7 @@ const ZetaCard = ({ entryPass, imgSrc }) => {
         // Check user's BITGERT token balance
         const userbitBalance = await bitgertContract.balanceOf(userAddress);
         const mintPriceInBitgert = ethers.utils.parseUnits(
-          '7000000000000000',
+          '6140000000000000',
           'wei'
         );
 
