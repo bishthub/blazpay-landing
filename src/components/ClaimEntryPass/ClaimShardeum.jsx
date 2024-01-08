@@ -3,7 +3,7 @@ import Navbar from '../Navbar';
 import ClaimHero from './ClaimHero';
 import Gradient from '../../utilities/Gradient';
 import Footer from '../Footer';
-import Zeta from './Zeta';
+import Shardeum from './Shardeum';
 
 const Claim = () => {
   return (
@@ -11,7 +11,7 @@ const Claim = () => {
       <Navbar />
       <ClaimHero />
       <Gradient />
-      <Zeta />
+      <Shardeum />
       <Footer />
     </div>
   );
